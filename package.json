@@ -1,0 +1,30 @@
+{
+  "name": "travelgram-app",
+  "version": "1.0.0",
+  "description": "An app for people to upload and share their travel photos.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "Mo",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.29.1",
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.0",
+    "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.3.1",
+    "multer": "^1.4.4",
+    "multer-gridfs-storage": "^5.0.2"
+  },
+  "devDependencies": {
+    "concurrently": "^7.1.0",
+    "nodemon": "^2.0.15"
+  }
+}
