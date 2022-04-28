@@ -42,7 +42,7 @@ const uploadImage = asyncHandler(async (req, res, next) => {
     user: req.user.id,
     image: result.secure_url,
     caption: req.body.caption,
-    imageLocation: req.body.location,
+    imageLocation: req.body.imageLocation,
     cloudinary_id: result.public_id,
   });
 
