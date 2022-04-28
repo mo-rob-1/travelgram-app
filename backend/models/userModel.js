@@ -17,6 +17,11 @@ const UserSchema = mongoose.Schema(
     },
     avatar: {
       type: String,
+      required: [true, "Avatar is required"],
+    },
+    currentLocation: {
+      type: String,
+      required: [true, "Current location is required"],
     },
     cloudinary_id: {
       type: String,
