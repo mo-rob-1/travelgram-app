@@ -5,7 +5,7 @@ const { protect } = require("../middleware/authMiddleware");
 const upload = require("../utils/multer");
 
 router.post("/", upload.single("image"), protect, uploadImage);
-router.get("/", protect, getAllImages).get("/:id", protect, getUserImages);
+router.get("/", getAllImages).get("/:id", getUserImages);
 router.delete("/:id", protect, deleteImage);
 
 module.exports = router;
