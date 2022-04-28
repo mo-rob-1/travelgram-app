@@ -18,8 +18,8 @@ const getAllUsers = asyncHandler(async (req, res, next) => {
 // @access Public
 const registerUser = asyncHandler(async (req, res) => {
   // Validate request
-  const { name, email, password } = req.body;
-  if (!name || !email || !password) {
+  const { name, email, password, currentLocation } = req.body;
+  if (!name || !email || !password || !currentLocation) {
     res.status(400);
     throw new Error("Please enter all fields");
   }
@@ -44,6 +44,7 @@ const registerUser = asyncHandler(async (req, res) => {
     email,
     password: hashedPassword,
     avatar: result.secure_url,
+    currentLocation,
     cloudinary_id: result.public_id,
   });
 
@@ -52,6 +53,8 @@ const registerUser = asyncHandler(async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
+      avatar: user.avatar,
+      currentLocation: user.currentLocation,
       token: generateToken(user._id),
     });
   } else {
@@ -75,11 +78,38 @@ const loginUser = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       token: generateToken(user._id),
-      avatar: user.avatar,
     });
   } else {
     res.status(400);
     throw new Error("Invalid credentials");
+  }
+});
+
+// @desc Update user
+// @route PUT /api/users/:id
+// @access Private
+const updateUser = asyncHandler(async (req, res) => {
+  const file = req.file;
+  if (file) {
+    const result = await cloudinary.uploader.upload(file.path);
+    req.body.avatar = result.secure_url;
+    req.body.cloudinary_id = result.public_id;
+  }
+  const avatar = req.file.path;
+  const result = await cloudinary.uploader.upload(avatar);
+  const location = req.body.currentLocation;
+
+  try {
+    const user = await User.findByIdAndUpdate(req.user.id, { avatar: result.secure_url, currentLocation: location });
+    res.status(200).json({
+      success: true,
+      data: user,
+    });
+  } catch (err) {
+    res.status(400).json({
+      success: false,
+      error: err,
+    });
   }
 });
 
@@ -101,5 +131,6 @@ module.exports = {
   getAllUsers,
   registerUser,
   loginUser,
+  updateUser,
   getMe,
 };
