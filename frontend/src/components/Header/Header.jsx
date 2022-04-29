@@ -18,7 +18,7 @@ function Header() {
     <header>
       <div>
         <div>
-          <Link to="/">Car Trader</Link>
+          <Link to="/">tavelGram</Link>
         </div>
       </div>
       <ul>
