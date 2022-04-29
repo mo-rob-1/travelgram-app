@@ -1,11 +1,13 @@
-const express = require("express");
-const router = express.Router();
-const { getAllImages, getUserImages, deleteImage, uploadImage } = require("../controllers/imageController");
-const { protect } = require("../middleware/authMiddleware");
-const upload = require("../utils/multer");
+// const express = require("express");
+// const router = express.Router();
+// const { getImages, updateImage, deleteImage, uploadImage, getUserImages } = require("../controllers/imageController");
+// const { protect } = require("../middleware/authMiddleware");
+// const upload = require("../utils/multer");
 
-router.post("/", upload.single("image"), protect, uploadImage);
-router.get("/", getAllImages).get("/:id", getUserImages);
-router.delete("/:id", protect, deleteImage);
+// router.post("/", upload.single("image"), uploadImage);
+// router.route("/").get(getImages);
+// router.route("/:id").put(protect, updateImage);
+// router.route("/:id").delete(protect, deleteImage);
+// router.route("/:id").get(getUserImages);
 
-module.exports = router;
+// module.exports = router;
