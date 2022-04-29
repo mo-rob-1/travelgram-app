@@ -22,6 +22,20 @@ app.use(cors());
 // app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/users", require("./routes/user"));
 
+// Serve Frontend
+if (process.env.NODE_ENV === "production") {
+  // Set build folder as static
+  app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+  app.get("*", (_, res) => {
+    res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.status(200).json({ message: "Welcome to the travelGram API" });
+  });
+}
+
 app.use(errorHandler);
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
