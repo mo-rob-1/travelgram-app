@@ -21,6 +21,7 @@ app.use(cors());
 // app.use("/api/images", require("./routes/imageRoutes"));
 // app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/users", require("./routes/user"));
+app.use("/api/images", require("./routes/imageRoutes"));
 
 // Serve Frontend
 if (process.env.NODE_ENV === "production") {
