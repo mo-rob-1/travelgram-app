@@ -1,109 +1,110 @@
-// const asyncHandler = require("express-async-handler");
-// const cloudinary = require("../utils/cloudinary");
-// const User = require("../models/userModel");
-// const Image = require("../models/imageModel");
+const asyncHandler = require("express-async-handler");
+const cloudinary = require("../utils/cloudinary");
+const User = require("../models/user");
+const Image = require("../models/imageModel");
 
-// // @desc Get images
-// // @route GET /api/images
-// // @access Private
+// @desc Get images
+// @route GET /api/images
+// @access Private
 
-// const getImages = asyncHandler(async (req, res, next) => {
-//   const images = await Image.find();
-//   // res.status(200).json({
-//   //   success: true,
-//   //   count: images.length,
-//   //   data: images,
-//   // });
-//   res.status(200).json(images);
-// });
+const getImages = asyncHandler(async (req, res, next) => {
+  const images = await Image.find();
+  // res.status(200).json({
+  //   success: true,
+  //   count: images.length,
+  //   data: images,
+  // });
+  res.status(200).json(images);
+});
 
-// // get user images
-// const getUserImages = asyncHandler(async (req, res, next) => {
-//   const user = await User.findById(req.params.id);
-//   if (!user) {
-//     return next(new ErrorResponse(`User not found with id of ${req.params.id}`, 404));
-//   }
-//   const images = await Image.find({ user: req.params.id });
-//   res.status(200).json({
-//     success: true,
-//     count: images.length,
-//     data: images,
-//   });
-// });
+// get user images
+const getUserImages = asyncHandler(async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+  if (!user) {
+    return next(new ErrorResponse(`User not found with id of ${req.params.id}`, 404));
+  }
 
-// const uploadImage = asyncHandler(async (req, res, next) => {
-//   if (!req.file) {
-//     res.status(400);
-//     throw new Error("Image is required");
-//   }
+  const images = await Image.find({ user: req.params.id });
 
-//   const result = await cloudinary.uploader.upload(req.file.path);
+  res.status(200).json(images);
+});
 
-//   const image = await Image.create({
-//     user: req.user.id,
-//     avatar: result.secure_url,
-//     caption: req.body.caption,
-//     cloudinary_id: result.public_id,
-//   });
+const uploadImage = asyncHandler(async (req, res, next) => {
+  // get user using the ID in the JWT
+  const user = await User.findById(req.user.id);
+  if (!user) {
+    return next(new ErrorResponse(`User does not exist`, 404));
+  }
 
-//   res.status(200).json({
-//     success: true,
-//     data: image,
-//   });
-// });
+  const result = await cloudinary.uploader.upload(req.file.path);
 
-// const updateImage = asyncHandler(async (req, res, next) => {
-//   const image = await Image.findById(req.params.id);
+  const image = await Image.create({
+    user: req.user.id,
+    image: result.secure_url,
+    imageLocation: req.body.imageLocation,
+    caption: req.body.caption,
+    cloudinary_id: result.public_id,
+    name: req.user.name,
+  });
 
-//   if (!image) {
-//     return next(new ErrorResponse(`Image not found with id of ${req.params.id}`, 404));
-//   }
+  res.status(200).json({
+    success: true,
+    data: image,
+  });
+});
 
-//   if (image.user.toString() !== req.user.id) {
-//     return next(new ErrorResponse(`User not authorized to update image`, 401));
-//   }
+const updateImage = asyncHandler(async (req, res, next) => {
+  const image = await Image.findById(req.params.id);
 
-//   const result = await cloudinary.uploader.upload(req.file.path);
+  if (!image) {
+    return next(new ErrorResponse(`Image not found with id of ${req.params.id}`, 404));
+  }
 
-//   image.avatar = result.secure_url;
-//   image.cloudinary_id = result.public_id;
+  if (image.user.toString() !== req.user.id) {
+    return next(new ErrorResponse(`User not authorized to update image`, 401));
+  }
 
-//   await image.save();
+  const result = await cloudinary.uploader.upload(req.file.path);
 
-//   res.status(200).json({
-//     success: true,
-//     data: image,
-//   });
-// });
+  image.avatar = result.secure_url;
+  image.cloudinary_id = result.public_id;
 
-// // @desc Delete a image
-// // @route DELETE /api/images/:id
-// // @access Private
+  await image.save();
 
-// const deleteImage = asyncHandler(async (req, res, next) => {
-//   const image = await Image.findById(req.params.id);
+  res.status(200).json({
+    success: true,
+    data: image,
+  });
+});
 
-//   if (!image) {
-//     return next(new ErrorResponse(`Image not found with id of ${req.params.id}`, 404));
-//   }
+// @desc Delete a image
+// @route DELETE /api/images/:id
+// @access Private
 
-//   if (image.user.toString() !== req.user.id) {
-//     return next(new ErrorResponse(`User not authorized to delete image`, 401));
-//   }
+const deleteImage = asyncHandler(async (req, res, next) => {
+  const image = await Image.findById(req.params.id);
 
-//   await cloudinary.uploader.destroy(image.cloudinary_id);
-//   await image.remove();
+  if (!image) {
+    return next(new ErrorResponse(`Image not found with id of ${req.params.id}`, 404));
+  }
 
-//   res.status(200).json({
-//     success: true,
-//     data: {},
-//   });
-// });
+  if (image.user.toString() !== req.user.id) {
+    return next(new ErrorResponse(`User not authorized to delete image`, 401));
+  }
 
-// module.exports = {
-//   getImages,
-//   uploadImage,
-//   updateImage,
-//   deleteImage,
-//   getUserImages,
-// };
+  await cloudinary.uploader.destroy(image.cloudinary_id);
+  await image.remove();
+
+  res.status(200).json({
+    success: true,
+    data: {},
+  });
+});
+
+module.exports = {
+  getImages,
+  uploadImage,
+  updateImage,
+  deleteImage,
+  getUserImages,
+};

@@ -4,6 +4,7 @@ import imageService from "./imageService";
 const initialState = {
   images: [],
   image: null,
+  // image: {},
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -11,12 +12,24 @@ const initialState = {
 };
 
 // upload image to server and cloudinary
-export const uploadImage = createAsyncThunk("images/uploadImage", async (imageData) => {
+// export const uploadImage = createAsyncThunk("images/uploadImage", async (imageData) => {
+//   try {
+//     const response = await imageService.uploadImage(imageData);
+//     return response.data;
+//   } catch (error) {
+//     throw error;
+//   }
+// });
+
+export const uploadImage = createAsyncThunk("images/uploadImage", async (imageData, thunkAPI) => {
   try {
-    const response = await imageService.uploadImage(imageData);
-    return response.data;
+    const token = thunkAPI.getState().auth.user.token;
+    return await imageService.uploadImage(imageData, token);
   } catch (error) {
-    throw error;
+    const message =
+      (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+
+    return thunkAPI.rejectWithValue(message);
   }
 });
 
@@ -30,41 +43,96 @@ export const getImages = createAsyncThunk("images/getImages", async (imageData, 
   }
 });
 
+// export const getUserImages = createAsyncThunk("images/getUserImages", async (imageData, thunkAPI) => {
+//   try {
+//     const token = thunkAPI.getState().auth.user.token;
+//     return await imageService.getUserImages(token);
+//   } catch (error) {
+//     const message =
+//       (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+
+//     return thunkAPI.rejectWithValue(message);
+//   }
+// });
+
+// get user images by id from server
+export const getUserImages = createAsyncThunk("images/getUserImages", async (_, thunkAPI) => {
+  try {
+    const token = thunkAPI.getState().auth.user.token;
+    return await imageService.getUserImages(token);
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+
+    return thunkAPI.rejectWithValue(message);
+  }
+});
+
 // image slice
-const imageSlice = createSlice({
+export const imageSlice = createSlice({
   name: "images",
   initialState,
   reducers: {
     reset: (state) => initialState,
   },
   extraReducers: (builder) => {
-    builder.addCase(uploadImage.pending, (state, action) => {
-      state.isLoading = true;
-    });
-    builder.addCase(uploadImage.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.isSuccess = true;
-      state.message = "Image uploaded successfully";
-      state.images.push(action.payload);
-    });
-    builder.addCase(uploadImage.rejected, (state, action) => {
-      state.isLoading = false;
-      state.isError = true;
-      state.message = action.payload.message;
-    });
-    builder.addCase(getImages.pending, (state, action) => {
-      state.isLoading = true;
-    });
-    builder.addCase(getImages.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.isSuccess = true;
-      state.images = action.payload;
-    });
-    builder.addCase(getImages.rejected, (state, action) => {
-      state.isLoading = false;
-      state.isError = true;
-      state.message = action.payload.message;
-    });
+    // upload image
+    // builder.addCase(uploadImage.fulfilled, (state, action) => {
+    //   state.isSuccess = true;
+    //   state.isLoading = false;
+    //   state.message = action.payload.message;
+    // });
+    // builder.addCase(uploadImage.pending, (state) => {
+    //   state.isLoading = true;
+    // });
+    // builder.addCase(uploadImage.rejected, (state, action) => {
+    //   state.isError = true;
+    //   state.isLoading = false;
+    //   state.message = action.payload;
+    // });
+    // // get users images
+    // builder.addCase(getUserImages.fulfilled, (state, action) => {
+    //   state.images = action.payload;
+    //   state.isSuccess = true;
+    //   state.isLoading = false;
+    // });
+    // builder.addCase(getUserImages.pending, (state) => {
+    //   state.isLoading = true;
+    // });
+    // builder.addCase(getUserImages.rejected, (state, action) => {
+    //   state.isError = true;
+    //   state.isLoading = false;
+    //   state.message = action.payload;
+    // });
+    builder
+      // upload image
+      .addCase(uploadImage.fulfilled, (state, action) => {
+        state.isSuccess = true;
+        state.isLoading = false;
+        state.message = action.payload.message;
+      })
+      .addCase(uploadImage.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(uploadImage.rejected, (state, action) => {
+        state.isError = true;
+        state.isLoading = false;
+        state.message = action.payload;
+      })
+      // get users images
+      .addCase(getUserImages.fulfilled, (state, action) => {
+        state.images = action.payload;
+        state.isSuccess = true;
+        state.isLoading = false;
+      })
+      .addCase(getUserImages.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getUserImages.rejected, (state, action) => {
+        state.isError = true;
+        state.isLoading = false;
+        state.message = action.payload;
+      });
   },
 });
 

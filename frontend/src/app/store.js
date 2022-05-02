@@ -7,4 +7,5 @@ export const store = configureStore({
     auth: authReducer,
     images: imageReducer,
   },
+  // middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });

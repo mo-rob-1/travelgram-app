@@ -26,12 +26,17 @@ function Header() {
           <>
             <li>
               <button>
+                <Link to="/our-users">Our Users</Link>
+              </button>
+            </li>
+            <li>
+              <button>
                 <Link to="/upload-image">Upload Image</Link>
               </button>
             </li>
             <li>
               <button>
-                <Link to="/profile">Profile</Link>
+                <Link to="/my-images">My Images</Link>
               </button>
             </li>
             <li>
@@ -40,12 +45,20 @@ function Header() {
           </>
         ) : (
           <>
-            {" "}
-            <li className="mr-4 md:mr-10">
-              <Link to="/login">Login</Link>
+            <li>
+              <button>
+                <Link to="/our-users">Our Users</Link>
+              </button>
             </li>
             <li>
-              <Link to="/register">Register</Link>
+              <button>
+                <Link to="/login">Login</Link>
+              </button>
+            </li>
+            <li>
+              <button>
+                <Link to="/register">Register</Link>
+              </button>
             </li>
           </>
         )}

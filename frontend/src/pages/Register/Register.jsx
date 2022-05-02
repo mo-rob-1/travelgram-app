@@ -22,7 +22,8 @@ function Register() {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      console.log("Passwords do not match");
+      toast.error("Passwords do not match");
+      return;
     } else {
       const formData = new FormData();
       formData.append("image", image);
@@ -32,6 +33,8 @@ function Register() {
       formData.append("confirmPassword", confirmPassword);
 
       dispatch(register(formData));
+
+      navigate("/");
     }
   };
 
@@ -39,20 +42,21 @@ function Register() {
     <div>
       <form onSubmit={handleSubmit}>
         <div>
-          <input type="file" onChange={handleChange} />
+          <input type="file" onChange={handleChange} required />
           {/* <button type="submit">Upload</button> */}
         </div>
         <div>
-          <input type="text" placeholder="name" value={name} onChange={(e) => setName(e.target.value)} />
+          <input type="text" placeholder="name" required value={name} onChange={(e) => setName(e.target.value)} />
         </div>
         <div>
-          <input type="text" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input type="text" placeholder="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
         </div>
         <div>
           <input
             type="password"
             placeholder="password"
             value={password}
+            required
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
@@ -61,6 +65,7 @@ function Register() {
             type="password"
             placeholder="confirm password"
             value={confirmPassword}
+            required
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </div>
