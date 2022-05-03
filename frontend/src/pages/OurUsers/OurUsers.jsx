@@ -30,7 +30,6 @@ function OurUsers() {
             <br></br>
             <img src={user.avatar} alt={user.name} height="40" />
             <p>{user.email}</p>
-            <p>{user._id}</p>
             <p>Joined at: {user.createdAt}</p>
           </li>
         ))}
