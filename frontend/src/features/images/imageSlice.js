@@ -68,6 +68,19 @@ export const getUserImages = createAsyncThunk("images/getUserImages", async (_, 
   }
 });
 
+// delete image from server
+export const deleteImage = createAsyncThunk("images/deleteImage", async (id, thunkAPI) => {
+  try {
+    const token = thunkAPI.getState().auth.user.token;
+    return await imageService.deleteImage(id, token);
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+
+    return thunkAPI.rejectWithValue(message);
+  }
+});
+
 // image slice
 export const imageSlice = createSlice({
   name: "images",
@@ -129,6 +142,19 @@ export const imageSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getUserImages.rejected, (state, action) => {
+        state.isError = true;
+        state.isLoading = false;
+        state.message = action.payload;
+      })
+      .addCase(deleteImage.fulfilled, (state, action) => {
+        state.isSuccess = true;
+        state.isLoading = false;
+        state.images = state.images.filter((image) => image._id !== action.payload);
+      })
+      .addCase(deleteImage.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteImage.rejected, (state, action) => {
         state.isError = true;
         state.isLoading = false;
         state.message = action.payload;

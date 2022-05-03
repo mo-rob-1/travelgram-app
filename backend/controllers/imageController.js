@@ -82,6 +82,11 @@ const updateImage = asyncHandler(async (req, res, next) => {
 // @access Private
 
 const deleteImage = asyncHandler(async (req, res, next) => {
+  const user = await User.findById(req.user.id);
+  if (!user) {
+    return next(new ErrorResponse(`User does not exist`, 404));
+  }
+
   const image = await Image.findById(req.params.id);
 
   if (!image) {

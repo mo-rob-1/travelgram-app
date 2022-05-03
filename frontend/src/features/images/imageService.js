@@ -35,10 +35,24 @@ const getUserImages = async (token) => {
   return response.data;
 };
 
+// Delete image
+const deleteImage = async (id, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.delete(`${API_URL}${id}`, config);
+
+  return response.data;
+};
+
 const imageService = {
   uploadImage,
   getImages,
   getUserImages,
+  deleteImage,
 };
 
 export default imageService;
