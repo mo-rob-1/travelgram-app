@@ -39,6 +39,11 @@ function Header() {
                 <Link to="/my-images">My Images</Link>
               </button>
             </li>
+            {/* <li>
+              <button>
+                <Link to="/update-profile">Update Profile</Link>
+              </button>
+            </li> */}
             <li>
               <button onClick={onLogout}>Logout</button>
             </li>

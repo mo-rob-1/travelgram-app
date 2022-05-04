@@ -19,6 +19,21 @@ const imageSchema = new mongoose.Schema(
     cloudinary_id: {
       type: String,
     },
+    name: {
+      type: String,
+      required: true,
+      ref: "User",
+    },
+    username: {
+      type: String,
+      required: true,
+      ref: "User",
+    },
+    avatar: {
+      type: String,
+      required: true,
+      ref: "User",
+    },
   },
   {
     timestamps: true,

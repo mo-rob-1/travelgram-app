@@ -30,7 +30,7 @@ function UploadImage() {
 
       dispatch(uploadImage(formData));
 
-      navigate("/");
+      window.location.reload(navigate("/upload-image"));
     }
   };
 
@@ -38,7 +38,7 @@ function UploadImage() {
     <div>
       <form onSubmit={handleSubmit}>
         <div>
-          <input type="file" onChange={handleChange} required />
+          <input type="file" onChange={handleChange} />
         </div>
         <div>
           <input

@@ -22,12 +22,13 @@ function Login() {
       toast.error(message);
     }
 
+    // Redirect when user is logged in
     if (isSuccess || user) {
       navigate("/");
     }
 
     dispatch(reset());
-  }, [user, isError, isSuccess, message, navigate, dispatch]);
+  }, [isError, isSuccess, user, message, navigate, dispatch]);
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -48,7 +49,12 @@ function Login() {
   };
 
   if (isLoading) {
-    return <h3>Loading...</h3>;
+    return (
+      <div>
+        <h2>Loading...</h2>
+        <p>If the page is still loading, refresh page and try again (Ensure email and password are correct)</p>
+      </div>
+    );
   }
 
   return (

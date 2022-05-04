@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { deleteImage, reset } from "../../features/images/imageSlice";
@@ -11,6 +12,7 @@ function MyImages() {
   const [userImages, setUserImages] = useState([]);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { name } = useParams();
 
@@ -43,15 +45,30 @@ function MyImages() {
 
   return (
     <div>
-      <h1>{user?.name} - My Images</h1>
-      {userImages.map((image) => (
-        <div key={image._id}>
-          <img src={image.image} alt={image.caption} />
-          <h3>{image.caption}</h3>
-          <p>{image.imageLocation}</p>
-          <button onClick={() => dispatch(deleteImage(image._id)) && window.location.reload()}>Delete</button>
+      {userImages.length === 0 && (
+        <div>
+          <h1>{user?.name} - My Images</h1>
+          <h3>You have not uploaded any images yet.</h3>
         </div>
-      ))}
+      )}
+
+      {userImages.length > 0 && (
+        <div>
+          <h1>{user?.name} - My Images</h1>
+          {userImages.map((image) => (
+            <div key={image._id}>
+              <img src={image.image} alt={image.caption} />
+              <h3>{image.caption}</h3>
+              <p>{image.imageLocation}</p>
+              <button
+                onClick={() => dispatch(deleteImage(image._id)) && window.location.reload(navigate("/my-images"))}
+              >
+                Delete
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

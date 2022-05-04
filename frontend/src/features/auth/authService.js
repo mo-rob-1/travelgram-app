@@ -41,12 +41,20 @@ const getUserById = async (userId) => {
   return response.data;
 };
 
+// Update user
+const updateUser = async (userId, userData) => {
+  const response = await axios.put(API_URL + userId, userData);
+
+  return response.data;
+};
+
 const authService = {
   register,
   login,
   logout,
   getUsers,
   getUserById,
+  updateUser,
 };
 
 export default authService;

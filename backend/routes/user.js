@@ -5,11 +5,11 @@ const cloudinary = require("../utils/cloudinary");
 const User = require("../models/user");
 const upload = require("../utils/multer");
 const router = require("express").Router();
-// const { protect } = require("../middleware/authMiddleware");
+const { ObjectId } = require("mongoose").Types;
 
-router.post("/", upload.single("image"), async (req, res) => {
-  const { name, email, password } = req.body;
-  if (!name || !email || !password) {
+router.post("/", upload.single("avatar"), async (req, res) => {
+  const { name, email, password, username } = req.body;
+  if (!name || !email || !password || !username) {
     res.status(400);
     throw new Error("Please enter all fields");
   }
@@ -19,6 +19,7 @@ router.post("/", upload.single("image"), async (req, res) => {
   // Check if user exists
   const userExists = await User.findOne({
     email,
+    username,
   });
   if (userExists) {
     res.status(400);
@@ -30,6 +31,7 @@ router.post("/", upload.single("image"), async (req, res) => {
   // Create user
   const user = await User.create({
     name,
+    username,
     email,
     password: hashedPassword,
     avatar: result.secure_url,
@@ -39,6 +41,7 @@ router.post("/", upload.single("image"), async (req, res) => {
     res.status(201).json({
       _id: user._id,
       name: user.name,
+      username: user.username,
       email: user.email,
       avatar: user.avatar,
       token: generateToken(user._id),
@@ -75,6 +78,7 @@ router.post("/login", async (req, res) => {
     email: user.email,
     token: generateToken(user._id),
     avatar: user.avatar,
+    username: user.username,
   });
 });
 
@@ -101,22 +105,26 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-router.put("/:id", upload.single("image"), async (req, res) => {
+// update user details and avatar
+router.put("/:id", upload.single("avatar"), async (req, res) => {
   try {
+    // Find user by id
     let user = await User.findById(req.params.id);
+
     // Delete image from cloudinary
-    await cloudinary.uploader.destroy(user.cloudinary_id);
+    // await cloudinary.uploader.destroy(user.cloudinary_id);
+    // Update user details
+    user.name = req.body.name;
+    user.username = req.body.username;
+    user.email = req.body.email;
+    user.password = req.body.password;
     // Upload image to cloudinary
-    let result;
-    if (req.file) {
-      result = await cloudinary.uploader.upload(req.file.path);
-    }
-    const data = {
-      name: req.body.name || user.name,
-      avatar: result?.secure_url || user.avatar,
-      cloudinary_id: result?.public_id || user.cloudinary_id,
-    };
-    user = await User.findByIdAndUpdate(req.params.id, data, { new: true });
+    // const result = await cloudinary.uploader.upload(req.file.path);
+    // Update user avatar
+    // user.avatar = result.secure_url;
+    // user.cloudinary_id = result.public_id;
+    // Save user
+    await user.save();
     res.json(user);
   } catch (err) {
     console.log(err);

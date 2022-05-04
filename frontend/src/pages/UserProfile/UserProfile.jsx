@@ -6,6 +6,7 @@ function UserProfile() {
   const { user } = useParams();
   const [images, setImages] = useState([]);
   const [userInfo, setUserInfo] = useState([]);
+
   useEffect(() => {
     axios
       .get(`/api/images/${user}`)
@@ -34,13 +35,24 @@ function UserProfile() {
 
   return (
     <div>
-      <h1>{userInfo.name} - User Profile</h1>
-      {images.map((image) => (
-        <div key={image._id}>
-          <img src={image.image} alt={image.caption} />
-          <h3>{image.caption}</h3>
+      {images.length === 0 && (
+        <div>
+          <h1>{userInfo.name} - My Images</h1>
+          <h3>This user has not uploaded any images yet.</h3>
         </div>
-      ))}
+      )}
+
+      {images.length > 0 && (
+        <div>
+          <h1>{userInfo.name} - User Profile</h1>
+          {images.map((image) => (
+            <div key={image._id}>
+              <img src={image.image} alt={image.caption} />
+              <h3>{image.caption}</h3>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

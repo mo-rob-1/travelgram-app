@@ -45,6 +45,8 @@ const uploadImage = asyncHandler(async (req, res, next) => {
     caption: req.body.caption,
     cloudinary_id: result.public_id,
     name: req.user.name,
+    username: req.user.username,
+    avatar: req.user.avatar,
   });
 
   res.status(200).json({
