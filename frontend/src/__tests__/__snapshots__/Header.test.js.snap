@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders the header 1`] = `
+<DocumentFragment>
+  <header>
+    <div>
+      <div>
+        <a
+          href="/"
+        >
+          travelGram
+        </a>
+      </div>
+    </div>
+    <ul>
+      <li>
+        <a
+          data-testid="our-users-link"
+          href="/our-users"
+        >
+          Our Users
+        </a>
+      </li>
+      <li>
+        <a
+          data-testid="login-link"
+          href="/login"
+        >
+          Login
+        </a>
+      </li>
+      <li>
+        <a
+          data-testid="register-link"
+          href="/register"
+        >
+          Register
+        </a>
+      </li>
+    </ul>
+  </header>
+</DocumentFragment>
+`;

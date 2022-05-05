@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home renders the homepage 1`] = `
+<DocumentFragment>
+  <div>
+    <h1>
+      Welcome to travelGram
+    </h1>
+    <ul />
+  </div>
+</DocumentFragment>
+`;
