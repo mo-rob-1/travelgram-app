@@ -2,19 +2,16 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 import { deleteImage, reset } from "../../features/images/imageSlice";
 
 function MyImages() {
   const { user } = useSelector((state) => state.auth);
-  const { images, isLoading, isSuccess } = useSelector((state) => state.images);
+  const { isLoading, isSuccess } = useSelector((state) => state.images);
 
   const [userImages, setUserImages] = useState([]);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const { name } = useParams();
 
   useEffect(() => {
     return () => {
@@ -24,9 +21,6 @@ function MyImages() {
     };
   }, [isSuccess, dispatch]);
 
-  // const handle delete image
-
-  // use axios to get users images by user id
   useEffect(() => {
     axios
       .get(`/api/images/${user._id}`)
