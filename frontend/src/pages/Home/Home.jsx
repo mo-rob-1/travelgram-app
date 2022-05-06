@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function Home() {
-  // display all images from the database and console.log them
   const [images, setImages] = useState([]);
 
   useEffect(() => {
@@ -24,7 +23,7 @@ function Home() {
       <ul>
         {images.map((image) => (
           <li key={image.cloudinary_id}>
-            <img src={image.image} alt={image.caption} height="400" />
+            <img src={image.image} alt={image.caption} height="400" data-testid="image" />
             <p>{image.caption}</p>
             <p>{image.imageLocation}</p>
           </li>
