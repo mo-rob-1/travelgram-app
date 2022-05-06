@@ -18,7 +18,6 @@ describe("Header", () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  // it renders the text logo
   it("renders the text logo", () => {
     render(
       <Provider store={store}>

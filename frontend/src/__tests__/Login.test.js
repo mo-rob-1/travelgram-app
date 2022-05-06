@@ -1,4 +1,4 @@
-import { render, screen, waitForDomChange } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { createMemoryHistory } from "history";
 import { Provider } from "react-redux";
 import { store } from "../app/store";
