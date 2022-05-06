@@ -18,26 +18,20 @@ function Header() {
     <header>
       <div>
         <div>
-          <Link to="/">tavelGram</Link>
+          <Link to="/">travelGram</Link>
         </div>
       </div>
       <ul>
         {user ? (
           <>
             <li>
-              <button>
-                <Link to="/our-users">Our Users</Link>
-              </button>
+              <Link to="/our-users">Our Users</Link>
             </li>
             <li>
-              <button>
-                <Link to="/upload-image">Upload Image</Link>
-              </button>
+              <Link to="/upload-image">Upload Image</Link>
             </li>
             <li>
-              <button>
-                <Link to="/my-images">My Images</Link>
-              </button>
+              <Link to="/my-images">My Images</Link>
             </li>
             {/* <li>
               <button>
@@ -51,19 +45,19 @@ function Header() {
         ) : (
           <>
             <li>
-              <button>
-                <Link to="/our-users">Our Users</Link>
-              </button>
+              <Link to="/our-users" data-testid="our-users-link">
+                Our Users
+              </Link>
             </li>
             <li>
-              <button>
-                <Link to="/login">Login</Link>
-              </button>
+              <Link to="/login" data-testid="login-link">
+                Login
+              </Link>
             </li>
             <li>
-              <button>
-                <Link to="/register">Register</Link>
-              </button>
+              <Link to="/register" data-testid="register-link">
+                Register
+              </Link>
             </li>
           </>
         )}
