@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { uploadImage, reset } from "../../features/images/imageSlice";
+import { useDispatch } from "react-redux";
+import { uploadImage } from "../../features/images/imageSlice";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -8,12 +8,40 @@ function UploadImage() {
   const [image, setImage] = useState(null);
   const [caption, setCaption] = useState("");
   const [imageLocation, setImageLocation] = useState("");
+  const [selectedFile, setSelectedFile] = useState();
+  const [preview, setPreview] = useState();
+
+  useEffect(() => {
+    if (!selectedFile) {
+      setPreview(undefined);
+      return;
+    }
+
+    const objectUrl = URL.createObjectURL(selectedFile);
+    setPreview(objectUrl);
+
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [selectedFile]);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     setImage(e.target.files[0]);
+
+    if (!e.target.files || e.target.files.length === 0) {
+      setSelectedFile(undefined);
+      return;
+    }
+
+    setSelectedFile(e.target.files[0]);
+  };
+
+  const cancel = () => {
+    setImage(null);
+    setSelectedFile(null);
+    setCaption("");
+    setImageLocation("");
   };
 
   const handleSubmit = (e) => {
@@ -60,7 +88,9 @@ function UploadImage() {
             data-testid="image-location-input"
           />
         </div>
+        {selectedFile && <img src={preview} alt="Preview" />}
         <div>
+          <button onClick={cancel}>Cancel</button>
           <button type="submit" data-testid="upload-button">
             Upload
           </button>
