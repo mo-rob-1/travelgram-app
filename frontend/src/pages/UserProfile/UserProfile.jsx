@@ -38,7 +38,7 @@ function UserProfile() {
       {images.length === 0 && (
         <div>
           <h1>{userInfo.name} - My Images</h1>
-          <h3>This user has not uploaded any images yet.</h3>
+          <h3 data-testid="no-images">This user has not uploaded any images yet.</h3>
         </div>
       )}
 

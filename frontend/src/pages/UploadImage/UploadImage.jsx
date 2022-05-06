@@ -36,9 +36,9 @@ function UploadImage() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} data-testid="form">
         <div>
-          <input type="file" onChange={handleChange} />
+          <input type="file" onChange={handleChange} data-testid="image-upload-input" />
         </div>
         <div>
           <input
@@ -47,6 +47,7 @@ function UploadImage() {
             required
             value={caption}
             onChange={(e) => setCaption(e.target.value)}
+            data-testid="caption-input"
           />
         </div>
         <div>
@@ -56,10 +57,13 @@ function UploadImage() {
             required
             value={imageLocation}
             onChange={(e) => setImageLocation(e.target.value)}
+            data-testid="image-location-input"
           />
         </div>
         <div>
-          <button type="submit">Upload</button>
+          <button type="submit" data-testid="upload-button">
+            Upload
+          </button>
         </div>
       </form>
     </div>

@@ -68,6 +68,7 @@ function Login() {
           <div className="form-group">
             <input
               type="email"
+              data-testid="email-input"
               className="form-control"
               id="email"
               name="email"
@@ -81,6 +82,7 @@ function Login() {
           <div className="form-group">
             <input
               type="password"
+              data-testid="password-input"
               className="form-control"
               id="password"
               name="password"
@@ -93,7 +95,7 @@ function Login() {
 
           <div className="form-group">
             <button type="submit" className="btn btn-block">
-              Submit
+              Login
             </button>
           </div>
         </form>
