@@ -20,9 +20,9 @@ const getImages = asyncHandler(async (req, res, next) => {
 // get user images
 const getUserImages = asyncHandler(async (req, res, next) => {
   const user = await User.findById(req.params.id);
-  if (!user) {
-    return next(new ErrorResponse(`User not found with id of ${req.params.id}`, 404));
-  }
+  // if (!user) {
+  //   return next(new ErrorResponse(`User not found with id of ${req.params.id}`, 404));
+  // }
 
   const images = await Image.find({ user: req.params.id });
 
