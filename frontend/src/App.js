@@ -12,29 +12,34 @@ import MyImages from "./pages/MyImages/MyImages";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import GlobalStyle from "./styles/Global";
+import { Container } from "./styles/Container.styled";
 
 function App() {
   return (
     <>
+      <GlobalStyle />
       <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/upload-image" element={<PrivateRoute />}>
-            <Route path="/upload-image" element={<UploadImage />} />
-          </Route>
-          <Route path="/our-users" element={<OurUsers />} />
-          <Route path="/our-users/:user" element={<UserProfile />} />
-          <Route path="/my-images/" element={<PrivateRoute />}>
-            <Route path="/my-images/" element={<MyImages />} />
-          </Route>
-          {/* <Route path="/update-profile/" element={<PrivateRoute />}>
+        <Container>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/upload-image" element={<PrivateRoute />}>
+              <Route path="/upload-image" element={<UploadImage />} />
+            </Route>
+            <Route path="/our-users" element={<OurUsers />} />
+            <Route path="/our-users/:user" element={<UserProfile />} />
+            <Route path="/my-images/" element={<PrivateRoute />}>
+              <Route path="/my-images/" element={<MyImages />} />
+            </Route>
+            {/* <Route path="/update-profile/" element={<PrivateRoute />}>
             <Route path="/update-profile/" element={<UpdateProfile />} />
           </Route> */}
-        </Routes>
-        <Footer />
+          </Routes>
+          <Footer />
+        </Container>
       </Router>
       <ToastContainer />
     </>
