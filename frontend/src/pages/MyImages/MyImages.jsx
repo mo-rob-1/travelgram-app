@@ -50,7 +50,7 @@ function MyImages() {
         <div>
           <h1>{user?.name} - My Images</h1>
           {userImages.map((image) => (
-            <div key={image._id}>
+            <div key={image.cloudinary_id}>
               <img src={image.image} alt={image.caption} />
               <h3>{image.caption}</h3>
               <p>{image.imageLocation}</p>
