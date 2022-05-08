@@ -58,7 +58,7 @@ function UploadImage() {
 
       dispatch(uploadImage(formData));
 
-      window.location.reload(navigate("/upload-image"));
+      navigate("/");
     }
   };
 

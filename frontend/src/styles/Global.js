@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
     }
     body {
         font-family: 'Jost', sans-serif;
+        background-color: #fafafa;
     }
     main {
         display: block;

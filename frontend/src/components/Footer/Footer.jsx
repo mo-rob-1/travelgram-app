@@ -1,12 +1,12 @@
-import React from "react";
+import { PageFooter } from "./Footer.styled";
 
 const Footer = () => {
   return (
-    <footer>
+    <PageFooter>
       <small>
         Coded by <a href="https://mocodes.co.uk/">Mo.</a>
       </small>
-    </footer>
+    </PageFooter>
   );
 };
 

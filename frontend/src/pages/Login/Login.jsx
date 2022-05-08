@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { login, reset } from "../../features/auth/authSlice";
+import { Container } from "./Login.styled";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -59,47 +60,49 @@ function Login() {
 
   return (
     <>
-      <section className="heading">
-        <h1>Login</h1>
-        <p>Login to access your account</p>
-      </section>
-      <section className="form">
-        <form onSubmit={onSubmit}>
-          <div className="form-group">
-            <input
-              type="email"
-              data-testid="email-input"
-              className="form-control"
-              id="email"
-              name="email"
-              value={email}
-              placeholder="Enter your email"
-              onChange={onChange}
-              required
-            />
-          </div>
+      <Container>
+        <section className="heading">
+          <h1>Login</h1>
+          <p>Login to access your account</p>
+        </section>
+        <section className="form">
+          <form onSubmit={onSubmit}>
+            <div className="form-group">
+              <input
+                type="email"
+                data-testid="email-input"
+                className="form-control"
+                id="email"
+                name="email"
+                value={email}
+                placeholder="Enter your email"
+                onChange={onChange}
+                required
+              />
+            </div>
 
-          <div className="form-group">
-            <input
-              type="password"
-              data-testid="password-input"
-              className="form-control"
-              id="password"
-              name="password"
-              value={password}
-              placeholder="Enter a password"
-              onChange={onChange}
-              required
-            />
-          </div>
+            <div className="form-group">
+              <input
+                type="password"
+                data-testid="password-input"
+                className="form-control"
+                id="password"
+                name="password"
+                value={password}
+                placeholder="Enter a password"
+                onChange={onChange}
+                required
+              />
+            </div>
 
-          <div className="form-group">
-            <button type="submit" className="btn btn-block">
-              Login
-            </button>
-          </div>
-        </form>
-      </section>
+            <div className="form-group">
+              <button type="submit" className="btn btn-block">
+                Login
+              </button>
+            </div>
+          </form>
+        </section>
+      </Container>
     </>
   );
 }
