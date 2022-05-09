@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         font-family: 'Jost', sans-serif;
         background-color: #fafafa;
+        color: #222;
     }
     main {
         display: block;
@@ -64,6 +65,12 @@ const GlobalStyle = createGlobalStyle`
     }
     img {
         border-style: none;
+        display: block;
+    }
+    .modalImg  {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
     }
     button,
     input,

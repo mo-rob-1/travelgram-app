@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 export const PageHeader = styled.header`
   padding-top: 2rem;
   padding-bottom: 2rem;
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+  }
 `;
 
 export const HeaderContainer = styled.div`
@@ -31,10 +35,23 @@ export const LogoWrapper = styled.div`
 
 export const Nav = styled.nav`
   margin-top: 1rem;
+  @media (min-width: 768px) {
+    margin-top: 0;
+  }
+`;
+
+export const NavWrapper = styled.div`
+  @media (min-width: 768px) {
+    display: flex;
+    align-items: center;
+  }
 `;
 
 export const StyledNavLink = styled(Link)`
   color: #222;
   text-decoration: none;
   margin-right: 1rem;
+  @media (min-width: 768px) {
+    margin-right: 2.5rem;
+  }
 `;
