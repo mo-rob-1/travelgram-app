@@ -1,7 +1,16 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../../features/auth/authSlice";
-import { PageHeader, HeaderContainer, Nav, LogoWrapper, List, StyledLogoLink, StyledNavLink } from "./Header.styled";
+import {
+  PageHeader,
+  HeaderContainer,
+  Nav,
+  NavWrapper,
+  LogoWrapper,
+  List,
+  StyledLogoLink,
+  StyledNavLink,
+} from "./Header.styled";
 
 function Header() {
   const navigate = useNavigate();
@@ -20,11 +29,17 @@ function Header() {
       <LogoWrapper>
         <StyledLogoLink to="/">travelGram</StyledLogoLink>
       </LogoWrapper>
-      <div>
+      <NavWrapper>
         <Nav>
           <List>
             {user ? (
               <>
+                <li>
+                  <StyledNavLink to="/">Home</StyledNavLink>
+                </li>
+                <li>
+                  <StyledNavLink to="/about">About</StyledNavLink>
+                </li>
                 <li>
                   <StyledNavLink to="/our-users">Our Users</StyledNavLink>
                 </li>
@@ -46,6 +61,12 @@ function Header() {
             ) : (
               <>
                 <li>
+                  <StyledNavLink to="/">Home</StyledNavLink>
+                </li>
+                <li>
+                  <StyledNavLink to="/about">About</StyledNavLink>
+                </li>
+                <li>
                   <StyledNavLink to="/our-users" data-testid="our-users-link">
                     Our Users
                   </StyledNavLink>
@@ -56,7 +77,7 @@ function Header() {
                   </StyledNavLink>
                 </li>
                 <li>
-                  <StyledNavLink to="/register" data-testid="register-link">
+                  <StyledNavLink to="/register" data-testid="register-link" style={{ marginRight: 0 }}>
                     Register
                   </StyledNavLink>
                 </li>
@@ -64,7 +85,7 @@ function Header() {
             )}
           </List>
         </Nav>
-      </div>
+      </NavWrapper>
     </PageHeader>
   );
 }

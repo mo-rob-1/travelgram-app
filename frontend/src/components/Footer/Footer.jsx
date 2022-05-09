@@ -1,11 +1,11 @@
-import { PageFooter } from "./Footer.styled";
+import { PageFooter, Copyright, CopyrightLink } from "./Footer.styled";
 
 const Footer = () => {
   return (
     <PageFooter>
-      <small>
-        Coded by <a href="https://mocodes.co.uk/">Mo.</a>
-      </small>
+      <Copyright>
+        Coded by <CopyrightLink href="https://mocodes.co.uk/">Mo.</CopyrightLink>
+      </Copyright>
     </PageFooter>
   );
 };

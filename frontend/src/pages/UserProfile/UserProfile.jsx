@@ -1,6 +1,25 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import ModalImage from "react-modal-image";
+import {
+  Section,
+  Image,
+  List,
+  Figure,
+  Location,
+  Username,
+  IconWrapper,
+  Title,
+  Avatar,
+  UserInfoWrapper,
+  NumberOfImagesWrapper,
+  Name,
+  UserInfoTextWrapper,
+  Line,
+} from "./UserProfile.styled";
+import { GoLocation } from "react-icons/go";
+import { AiOutlineUser } from "react-icons/ai";
 
 function UserProfile() {
   const { user } = useParams();
@@ -19,8 +38,6 @@ function UserProfile() {
       });
   }, []);
 
-  // fetch the name of the user from the database
-
   useEffect(() => {
     axios
       .get(`/api/users/${user}`)
@@ -34,26 +51,69 @@ function UserProfile() {
   }, []);
 
   return (
-    <div>
+    <Section>
       {images.length === 0 && (
         <div>
-          <h1>{userInfo.name} - My Images</h1>
-          <h3 data-testid="no-images">This user has not uploaded any images yet.</h3>
+          <UserInfoWrapper>
+            <UserInfoTextWrapper>
+              <Avatar src={userInfo.avatar} alt={userInfo.name} />
+              <Title>{userInfo.username}</Title>
+              <Name>{userInfo.name}</Name>
+            </UserInfoTextWrapper>
+            <NumberOfImagesWrapper>
+              <h3>{images.length} images</h3>
+            </NumberOfImagesWrapper>
+          </UserInfoWrapper>
+          <Line></Line>
+          <h3 data-testid="no-images" style={{ marginTop: "1.5rem" }}>
+            This user has not uploaded any images yet.
+          </h3>
         </div>
       )}
 
       {images.length > 0 && (
         <div>
-          <h1>{userInfo.name} - User Profile</h1>
-          {images.map((image) => (
-            <div key={image._id}>
-              <img src={image.image} alt={image.caption} />
-              <h3>{image.caption}</h3>
-            </div>
-          ))}
+          <UserInfoWrapper>
+            <UserInfoTextWrapper>
+              <Avatar src={userInfo.avatar} alt={userInfo.name} />
+              <Title>{userInfo.username}</Title>
+              <Name>{userInfo.name}</Name>
+            </UserInfoTextWrapper>
+            <NumberOfImagesWrapper>
+              <h3>{images.length} images</h3>
+            </NumberOfImagesWrapper>
+          </UserInfoWrapper>
+          <Line></Line>
+          <List>
+            {images.map((image) => (
+              <li key={image.cloudinary_id}>
+                <Figure>
+                  <div>
+                    <ModalImage
+                      small={image.image}
+                      large={image.image}
+                      alt={image.caption}
+                      className="modalImg"
+                      data-testid="image"
+                    />
+                  </div>
+                  {/* <Username>
+                    <IconWrapper>
+                      <AiOutlineUser style={{ marginRight: "4px" }} /> {image.username}
+                    </IconWrapper>
+                  </Username> */}
+                  <Location>
+                    <IconWrapper>
+                      <GoLocation style={{ marginRight: "4px" }} /> {image.imageLocation}
+                    </IconWrapper>
+                  </Location>
+                </Figure>
+              </li>
+            ))}
+          </List>
         </div>
       )}
-    </div>
+    </Section>
   );
 }
 
