@@ -63,8 +63,11 @@ export const Title = styled.h2`
 `;
 
 export const Avatar = styled.img`
-  height: 60px;
+  height: 100px;
+  object-fit: contain;
   border-radius: 50%;
+  width: 100px;
+  object-fit: cover;
 `;
 
 export const UserInfoWrapper = styled.div`

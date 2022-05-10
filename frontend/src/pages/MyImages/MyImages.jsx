@@ -59,11 +59,23 @@ function MyImages() {
   }
 
   return (
-    <div>
+    <Section>
       {userImages.length === 0 && (
         <div>
-          <h1>{user?.name} - My Images</h1>
-          <h3>You have not uploaded any images yet.</h3>
+          <UserInfoWrapper>
+            <UserInfoTextWrapper>
+              <Avatar src={user.avatar} alt={user.name} />
+              <Title>{user.username}</Title>
+              <Name>{user.name}</Name>
+            </UserInfoTextWrapper>
+            <NumberOfImagesWrapper>
+              <h3>{userImages.length} images</h3>
+            </NumberOfImagesWrapper>
+          </UserInfoWrapper>
+          <Line></Line>
+          <h3 data-testid="no-images" style={{ marginTop: "1.5rem" }}>
+            You have not uploaded any images yet.
+          </h3>
         </div>
       )}
 
@@ -125,7 +137,7 @@ function MyImages() {
           </List>
         </div>
       )}
-    </div>
+    </Section>
   );
 }
 

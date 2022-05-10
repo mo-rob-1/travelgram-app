@@ -58,7 +58,6 @@ export const Section = styled.section`
 
 export const Title = styled.h1`
   margin-top: 0;
-
   @media (min-width: 768px) {
     margin-top: 1rem;
   }

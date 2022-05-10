@@ -1,6 +1,17 @@
 import { useEffect, useState } from "react";
-
-import { Link } from "react-router-dom";
+import moment from "moment";
+import {
+  List,
+  ListItem,
+  ImageWrapper,
+  Avatar,
+  Title,
+  StyledCardLink,
+  UsernameTitle,
+  UserTextWrapper,
+  ViewProfile,
+  Section,
+} from "./OurUsers.styled";
 import axios from "axios";
 
 function OurUsers() {
@@ -19,20 +30,30 @@ function OurUsers() {
   }, []);
 
   return (
-    <div>
-      <h1>Our Users</h1>
-      <ul data-testid="list">
+    <Section>
+      <Title>Our Users</Title>
+      <List data-testid="list">
         {users.map((user) => (
-          <li key={user.name}>
-            <Link to={`/our-users/${user._id}`}>{user.name}</Link>
-            <br></br>
-            <img src={user.avatar} alt={user.name} height="40" />
-            <p>{user.email}</p>
-            <p>Joined at: {user.createdAt}</p>
-          </li>
+          <ListItem key={user.cloudinary_id}>
+            <StyledCardLink to={`/our-users/${user._id}`}>
+              <ImageWrapper>
+                <Avatar src={user.avatar} alt={user.username} />
+              </ImageWrapper>
+
+              <UserTextWrapper>
+                <UsernameTitle>{user.username}</UsernameTitle>
+                <div style={{ marginTop: ".7rem", marginBottom: ".7rem", display: "grid", gap: ".4rem" }}>
+                  <p>{user.name}</p>
+                  <p>{user.email}</p>
+                  <p>Joined: {moment(user.createdAt).format("MMMM YYYY")}</p>
+                </div>
+                <ViewProfile to={`/our-users/${user._id}`}>View Profile</ViewProfile>
+              </UserTextWrapper>
+            </StyledCardLink>
+          </ListItem>
         ))}
-      </ul>
-    </div>
+      </List>
+    </Section>
   );
 }
 
