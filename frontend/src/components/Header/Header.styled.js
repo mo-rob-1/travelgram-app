@@ -55,3 +55,9 @@ export const StyledNavLink = styled(Link)`
     margin-right: 2.5rem;
   }
 `;
+
+export const LogoutButton = styled.button`
+  cursor: pointer;
+  background-color: inherit;
+  border: none;
+`;

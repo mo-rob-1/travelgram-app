@@ -10,6 +10,7 @@ import {
   List,
   StyledLogoLink,
   StyledNavLink,
+  LogoutButton,
 } from "./Header.styled";
 
 function Header() {
@@ -37,9 +38,9 @@ function Header() {
                 <li>
                   <StyledNavLink to="/">Home</StyledNavLink>
                 </li>
-                <li>
+                {/* <li>
                   <StyledNavLink to="/about">About</StyledNavLink>
-                </li>
+                </li> */}
                 <li>
                   <StyledNavLink to="/our-users">Our Users</StyledNavLink>
                 </li>
@@ -55,7 +56,7 @@ function Header() {
                   </button>
                 </li> */}
                 <li>
-                  <button onClick={onLogout}>Logout</button>
+                  <LogoutButton onClick={onLogout}>Logout</LogoutButton>
                 </li>
               </>
             ) : (
