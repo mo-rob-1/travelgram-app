@@ -1,9 +1,5 @@
 import styled from "styled-components";
 
-export const Image = styled.img`
-  width: 100%;
-`;
-
 export const List = styled.ul`
   list-style-type: none;
   display: grid;
@@ -30,16 +26,6 @@ export const Location = styled.figcaption`
   padding: 1rem;
   color: #fff;
   background-color: #222222b8;
-  font-size: 14px;
-`;
-
-export const Username = styled.figcaption`
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: #222222b8;
-  color: #fff;
-  padding: 1rem;
   font-size: 14px;
 `;
 

@@ -10,11 +10,6 @@ export const PageHeader = styled.header`
   }
 `;
 
-export const HeaderContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
 export const List = styled.ul`
   list-style-type: none;
   display: flex;
@@ -60,4 +55,9 @@ export const LogoutButton = styled.button`
   cursor: pointer;
   background-color: inherit;
   border: none;
+  color: #222;
+`;
+
+export const Span = styled.span`
+  font-weight: 400;
 `;

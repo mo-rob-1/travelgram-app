@@ -11,7 +11,8 @@ export const Section = styled.section`
 export const Canvas = styled.canvas`
   height: 300px;
   width: 100%;
-  border: 2px solid lightgray;
+  background: #fff;
+  border: 2px solid #ccc;
   @media (min-width: 1440px) {
     height: 400px;
   }
@@ -41,9 +42,8 @@ export const InputWrapper = styled.div`
 
 export const Input = styled.input`
   width: 100%;
-  border: 1px solid lightgray;
+  border: 1px solid #ccc;
   padding: 0.8rem 0.8rem;
-  border-radius: 0.4rem;
   margin-top: 0.4rem;
 `;
 
@@ -84,4 +84,11 @@ export const ColOne = styled.div`
 
 export const ColTwo = styled.div`
   display: block;
+`;
+
+export const UploadInput = styled.input`
+  width: 50%;
+  @media (min-width: 768px) {
+    width: 100%;
+  }
 `;
