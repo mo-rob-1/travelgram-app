@@ -5,11 +5,9 @@ import axios from "axios";
 import { deleteImage, reset } from "../../features/images/imageSlice";
 import {
   Section,
-  Image,
   List,
   Figure,
   Location,
-  Username,
   IconWrapper,
   Title,
   Avatar,
@@ -22,7 +20,6 @@ import {
 } from "./MyImages.styled";
 import ModalImage from "react-modal-image";
 import { GoLocation } from "react-icons/go";
-import { AiOutlineUser } from "react-icons/ai";
 import { AiOutlineClose } from "react-icons/ai";
 
 function MyImages() {
@@ -46,8 +43,7 @@ function MyImages() {
     axios
       .get(`/api/images/${user._id}`)
       .then((res) => {
-        console.log(res.data);
-        setUserImages(res.data);
+        setUserImages(res.data.reverse());
       })
       .catch((err) => {
         console.log(err);
@@ -55,7 +51,7 @@ function MyImages() {
   }, []);
 
   if (isLoading) {
-    return <h3>Loading...</h3>;
+    return <h2>Loading...</h2>;
   }
 
   return (
@@ -94,16 +90,6 @@ function MyImages() {
           <Line></Line>
           <List>
             {userImages.map((image) => (
-              // <div key={image.cloudinary_id}>
-              //   <img src={image.image} alt={image.caption} />
-              //   <h3>{image.caption}</h3>
-              //   <p>{image.imageLocation}</p>
-              //   <button
-              //     onClick={() => dispatch(deleteImage(image._id)) && window.location.reload(navigate("/my-images"))}
-              //   >
-              //     Delete
-              //   </button>
-              // </div>
               <li key={image.cloudinary_id}>
                 <Figure>
                   <div>
@@ -115,11 +101,6 @@ function MyImages() {
                       data-testid="image"
                     />
                   </div>
-                  {/* <Username>
-                <IconWrapper>
-                  <AiOutlineUser style={{ marginRight: "4px" }} /> {image.username}
-                </IconWrapper>
-              </Username> */}
                   <Location>
                     <IconWrapper>
                       <GoLocation style={{ marginRight: "4px" }} /> {image.imageLocation}

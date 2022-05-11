@@ -16,18 +16,27 @@ import axios from "axios";
 
 function OurUsers() {
   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
       .get("/api/users")
       .then((res) => {
-        console.log(res.data);
-        setUsers(res.data);
+        setUsers(res.data.reverse());
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+
+  if (loading) {
+    return (
+      <Section>
+        <h2>Loading...</h2>
+      </Section>
+    );
+  }
 
   return (
     <Section>
