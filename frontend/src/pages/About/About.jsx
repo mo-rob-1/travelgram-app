@@ -1,9 +1,13 @@
+import { Section, Span } from "./About.styled";
+
 function About() {
   return (
-    <div>
-      <h1>About travelGram</h1>
+    <Section>
+      <h1>
+        About <Span>travel</Span>Gram
+      </h1>
       <p>This is the about page.</p>
-    </div>
+    </Section>
   );
 }
 
