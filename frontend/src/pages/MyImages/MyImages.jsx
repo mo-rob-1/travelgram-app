@@ -107,9 +107,7 @@ function MyImages() {
                     </IconWrapper>
                   </Location>
                   <div></div>
-                  <DeleteButton
-                    onClick={() => dispatch(deleteImage(image._id)) && window.location.reload(navigate("/my-images"))}
-                  >
+                  <DeleteButton onClick={() => dispatch(deleteImage(image._id)) && navigate("/my-images")}>
                     <AiOutlineClose style={{ color: "#fff", fontSize: "1.4rem", position: "relative", top: "2px" }} />
                   </DeleteButton>
                 </Figure>
