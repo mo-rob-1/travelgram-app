@@ -4,11 +4,9 @@ import { useParams } from "react-router-dom";
 import ModalImage from "react-modal-image";
 import {
   Section,
-  Image,
   List,
   Figure,
   Location,
-  Username,
   IconWrapper,
   Title,
   Avatar,
@@ -19,19 +17,19 @@ import {
   Line,
 } from "./UserProfile.styled";
 import { GoLocation } from "react-icons/go";
-import { AiOutlineUser } from "react-icons/ai";
 
 function UserProfile() {
   const { user } = useParams();
   const [images, setImages] = useState([]);
   const [userInfo, setUserInfo] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
       .get(`/api/images/${user}`)
       .then((res) => {
-        console.log(res.data);
-        setImages(res.data);
+        setImages(res.data.reverse());
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -42,13 +40,20 @@ function UserProfile() {
     axios
       .get(`/api/users/${user}`)
       .then((res) => {
-        console.log(res.data);
         setUserInfo(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+
+  if (loading) {
+    return (
+      <Section>
+        <h2>Loading...</h2>
+      </Section>
+    );
+  }
 
   return (
     <Section>
