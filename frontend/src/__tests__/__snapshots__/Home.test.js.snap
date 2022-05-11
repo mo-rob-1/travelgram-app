@@ -2,11 +2,12 @@
 
 exports[`Home renders the homepage 1`] = `
 <DocumentFragment>
-  <div>
-    <h1>
-      Welcome to travelGram
-    </h1>
-    <ul />
-  </div>
+  <section
+    class="sc-jSMfEi ibteZu"
+  >
+    <h2>
+      Loading...
+    </h2>
+  </section>
 </DocumentFragment>
 `;

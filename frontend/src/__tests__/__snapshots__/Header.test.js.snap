@@ -2,42 +2,80 @@
 
 exports[`Header renders the header 1`] = `
 <DocumentFragment>
-  <header>
-    <div>
-      <div>
-        <a
-          href="/"
+  <header
+    class="sc-bczRLJ fNAhah"
+  >
+    <div
+      class="sc-hKMtZM bkSyjT"
+    >
+      <a
+        class="sc-dkzDqf iflLIM"
+        href="/"
+      >
+        <span
+          class="sc-ftvSup dybfDo"
         >
-          travelGram
-        </a>
-      </div>
+          travel
+        </span>
+        Gram
+      </a>
     </div>
-    <ul>
-      <li>
-        <a
-          data-testid="our-users-link"
-          href="/our-users"
+    <div
+      class="sc-jSMfEi heNKbs"
+    >
+      <nav
+        class="sc-eCYdqJ jWlGGJ"
+      >
+        <ul
+          class="sc-gsnTZi fbDbaA"
         >
-          Our Users
-        </a>
-      </li>
-      <li>
-        <a
-          data-testid="login-link"
-          href="/login"
-        >
-          Login
-        </a>
-      </li>
-      <li>
-        <a
-          data-testid="register-link"
-          href="/register"
-        >
-          Register
-        </a>
-      </li>
-    </ul>
+          <li>
+            <a
+              class="sc-gKXOVf frrZiV"
+              href="/"
+            >
+              Home
+            </a>
+          </li>
+          <li>
+            <a
+              class="sc-gKXOVf frrZiV"
+              href="/about"
+            >
+              About
+            </a>
+          </li>
+          <li>
+            <a
+              class="sc-gKXOVf frrZiV"
+              data-testid="our-users-link"
+              href="/our-users"
+            >
+              Our Users
+            </a>
+          </li>
+          <li>
+            <a
+              class="sc-gKXOVf frrZiV"
+              data-testid="login-link"
+              href="/login"
+            >
+              Login
+            </a>
+          </li>
+          <li>
+            <a
+              class="sc-gKXOVf frrZiV"
+              data-testid="register-link"
+              href="/register"
+              style="margin-right: 0px;"
+            >
+              Register
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </header>
 </DocumentFragment>
 `;

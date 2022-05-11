@@ -2,69 +2,140 @@
 
 exports[`Register renders the register user page 1`] = `
 <DocumentFragment>
-  <div>
-    <h1>
-      Register
-    </h1>
-    <form>
-      <div>
-        <input
-          required=""
-          type="file"
-        />
-      </div>
-      <div>
-        <input
-          data-testid="name-input"
-          placeholder="name"
-          required=""
-          type="text"
-          value=""
-        />
-      </div>
-      <div>
-        <input
-          data-testid="username-input"
-          placeholder="username"
-          required=""
-          type="text"
-          value=""
-        />
-      </div>
-      <div>
-        <input
-          data-testid="email-input"
-          placeholder="email"
-          required=""
-          type="text"
-          value=""
-        />
-      </div>
-      <div>
-        <input
-          data-testid="password-input"
-          placeholder="password"
-          required=""
-          type="password"
-          value=""
-        />
-      </div>
-      <div>
-        <input
-          data-testid="confirm-password-input"
-          placeholder="confirm password"
-          required=""
-          type="password"
-          value=""
-        />
-      </div>
-      <button
-        data-testid="register-button"
-        type="submit"
+  <div
+    class="sc-bczRLJ doKmgW"
+  >
+    <div
+      class="sc-gKXOVf lglQeP"
+    >
+      <div
+        class="sc-hKMtZM eaZWLe"
       >
-        Register
-      </button>
-    </form>
+        <h1
+          class="sc-eCYdqJ cPjzgk"
+        >
+          Register
+        </h1>
+        <p>
+          Register to create an account
+        </p>
+      </div>
+      <form>
+        <div>
+          <label
+            for="avatar"
+          >
+            Add Profile Picture:
+          </label>
+          <br />
+          <input
+            class="sc-papXJ hVPUAB"
+            required=""
+            style="margin-top: 4px;"
+            type="file"
+          />
+        </div>
+        <div
+          class="sc-jSMfEi cbYRGd"
+        >
+          <label
+            for="name"
+          >
+            Name:
+          </label>
+          <input
+            class="sc-gsnTZi dYzNv"
+            data-testid="name-input"
+            required=""
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          class="sc-jSMfEi cbYRGd"
+        >
+          <label
+            for="username"
+          >
+            Username:
+          </label>
+          <input
+            class="sc-gsnTZi dYzNv"
+            data-testid="username-input"
+            required=""
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          class="sc-jSMfEi cbYRGd"
+        >
+          <label
+            for="email"
+          >
+            Email:
+          </label>
+          <input
+            class="sc-gsnTZi dYzNv"
+            data-testid="email-input"
+            required=""
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          class="sc-jSMfEi cbYRGd"
+        >
+          <label
+            for="password"
+          >
+            Password:
+          </label>
+          <input
+            class="sc-gsnTZi dYzNv"
+            data-testid="password-input"
+            required=""
+            type="password"
+            value=""
+          />
+        </div>
+        <div
+          class="sc-jSMfEi cbYRGd"
+        >
+          <label
+            for="confirmPassword"
+          >
+            Confirm Password:
+          </label>
+          <input
+            class="sc-gsnTZi dYzNv"
+            data-testid="confirm-password-input"
+            required=""
+            type="password"
+            value=""
+          />
+        </div>
+        <div>
+          <button
+            class="sc-dkzDqf kmGjhI"
+            data-testid="register-button"
+            type="submit"
+          >
+            Register
+          </button>
+        </div>
+        <div
+          class="sc-iBkjds jxABVU"
+        >
+          <a
+            class="sc-ftvSup eRLnRy"
+            href="/login"
+          >
+            Login Instead
+          </a>
+        </div>
+      </form>
+    </div>
   </div>
 </DocumentFragment>
 `;

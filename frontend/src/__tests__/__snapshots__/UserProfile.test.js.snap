@@ -2,17 +2,12 @@
 
 exports[`UserProfile renders the user profile page 1`] = `
 <DocumentFragment>
-  <div>
-    <div>
-      <h1>
-         - My Images
-      </h1>
-      <h3
-        data-testid="no-images"
-      >
-        This user has not uploaded any images yet.
-      </h3>
-    </div>
-  </div>
+  <section
+    class="sc-eCYdqJ gwsNzk"
+  >
+    <h2>
+      Loading...
+    </h2>
+  </section>
 </DocumentFragment>
 `;

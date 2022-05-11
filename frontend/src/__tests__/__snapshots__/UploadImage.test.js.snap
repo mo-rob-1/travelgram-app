@@ -2,43 +2,92 @@
 
 exports[`UploadImage renders the upload image page 1`] = `
 <DocumentFragment>
-  <div>
+  <section
+    class="sc-bczRLJ boIiCX"
+  >
+    <h1
+      class="sc-papXJ bPCgLm"
+    >
+      Upload Image
+    </h1>
     <form
+      class="sc-hKMtZM kMwlze"
       data-testid="form"
     >
-      <div>
-        <input
-          data-testid="image-upload-input"
-          type="file"
-        />
-      </div>
-      <div>
-        <input
-          data-testid="caption-input"
-          placeholder="caption"
-          required=""
-          type="text"
-          value=""
-        />
-      </div>
-      <div>
-        <input
-          data-testid="image-location-input"
-          placeholder="imageLocation"
-          required=""
-          type="text"
-          value=""
-        />
-      </div>
-      <div>
-        <button
-          data-testid="upload-button"
-          type="submit"
+      <div
+        class="sc-jqUVSM hyXLld"
+      >
+        <div>
+          <input
+            class="sc-iqcoie dmEgGu"
+            data-testid="image-upload-input"
+            style="margin-bottom: 1rem;"
+            type="file"
+          />
+        </div>
+        <div
+          class="sc-ftvSup klfYgA"
         >
-          Upload
-        </button>
+          <div
+            class="sc-eCYdqJ XwHSn"
+          >
+            <label
+              for="caption"
+            >
+              Caption:
+            </label>
+            <br />
+            <input
+              class="sc-jSMfEi ZyOou"
+              data-testid="caption-input"
+              required=""
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="sc-eCYdqJ XwHSn"
+          >
+            <label
+              for="image-location"
+            >
+              Image Location:
+            </label>
+            <br />
+            <input
+              class="sc-jSMfEi ZyOou"
+              data-testid="image-location-input"
+              required=""
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="sc-kDDrLX fZDAPW"
+      >
+        <canvas
+          class="sc-gsnTZi lkApQR"
+        />
+        <div
+          class="sc-gKXOVf ktAsrd"
+        >
+          <button
+            class="sc-iBkjds dQtZOM"
+          >
+            Cancel
+          </button>
+          <button
+            class="sc-iBkjds dQtZOM"
+            data-testid="upload-button"
+            type="submit"
+          >
+            Upload
+          </button>
+        </div>
       </div>
     </form>
-  </div>
+  </section>
 </DocumentFragment>
 `;
