@@ -16,6 +16,7 @@ import {
   Title,
   ColOne,
   ColTwo,
+  UploadInput,
 } from "./UploadImage.styled";
 
 function UploadImage() {
@@ -82,7 +83,7 @@ function UploadImage() {
       <Form onSubmit={handleSubmit} data-testid="form">
         <ColOne>
           <div>
-            <input
+            <UploadInput
               type="file"
               onChange={handleChange}
               data-testid="image-upload-input"
