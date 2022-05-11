@@ -13,6 +13,7 @@ import MyImages from "./pages/MyImages/MyImages";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import ScrollButton from "./components/ScrollButton/ScrollButton";
 import GlobalStyle from "./styles/Global";
 import { Container } from "./styles/Container.styled";
 
@@ -43,6 +44,7 @@ function App() {
           <Footer />
         </Container>
       </Router>
+      <ScrollButton />
       <ToastContainer />
     </>
   );
