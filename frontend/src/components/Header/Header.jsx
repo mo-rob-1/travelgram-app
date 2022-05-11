@@ -1,9 +1,8 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../../features/auth/authSlice";
 import {
   PageHeader,
-  HeaderContainer,
   Nav,
   NavWrapper,
   LogoWrapper,
@@ -11,6 +10,7 @@ import {
   StyledLogoLink,
   StyledNavLink,
   LogoutButton,
+  Span,
 } from "./Header.styled";
 
 function Header() {
@@ -28,7 +28,9 @@ function Header() {
   return (
     <PageHeader>
       <LogoWrapper>
-        <StyledLogoLink to="/">travelGram</StyledLogoLink>
+        <StyledLogoLink to="/">
+          <Span>travel</Span>Gram
+        </StyledLogoLink>
       </LogoWrapper>
       <NavWrapper>
         <Nav>
