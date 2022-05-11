@@ -3,6 +3,18 @@ import { useDispatch } from "react-redux";
 import { register } from "../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import {
+  Container,
+  StyledLink,
+  Input,
+  Button,
+  Heading,
+  HeadingWrapper,
+  FieldWrapper,
+  FormWrapper,
+  LinkWrapper,
+  ChooseFile,
+} from "./Register.styled";
 
 function Register() {
   const [avatar, setAvatar] = useState(null);
@@ -41,67 +53,83 @@ function Register() {
   };
 
   return (
-    <div>
-      <h1>Register</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input type="file" onChange={handleChange} required />
-        </div>
-        <div>
-          <input
-            type="text"
-            placeholder="name"
-            required
-            value={name}
-            data-testid="name-input"
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
-        <div>
-          <input
-            type="text"
-            placeholder="username"
-            data-testid="username-input"
-            required
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div>
-          <input
-            type="text"
-            placeholder="email"
-            required
-            value={email}
-            data-testid="email-input"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div>
-          <input
-            type="password"
-            placeholder="password"
-            value={password}
-            data-testid="password-input"
-            required
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div>
-          <input
-            type="password"
-            placeholder="confirm password"
-            value={confirmPassword}
-            data-testid="confirm-password-input"
-            required
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-        </div>
-        <button type="submit" data-testid="register-button">
-          Register
-        </button>
-      </form>
-    </div>
+    <>
+      <Container>
+        <FormWrapper>
+          <HeadingWrapper>
+            <Heading>Register</Heading>
+            <p>Register to create an account</p>
+          </HeadingWrapper>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label htmlFor="avatar">Add Profile Picture:</label>
+              <br></br>
+              <ChooseFile style={{ marginTop: "4px" }} type="file" onChange={handleChange} required />
+            </div>
+            <FieldWrapper>
+              <label htmlFor="name">Name:</label>
+              <Input
+                type="text"
+                required
+                value={name}
+                data-testid="name-input"
+                onChange={(e) => setName(e.target.value)}
+              />
+            </FieldWrapper>
+            <FieldWrapper>
+              <label htmlFor="username">Username:</label>
+              <Input
+                type="text"
+                data-testid="username-input"
+                required
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </FieldWrapper>
+            <FieldWrapper>
+              <label htmlFor="email">Email:</label>
+              <Input
+                type="text"
+                required
+                value={email}
+                data-testid="email-input"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </FieldWrapper>
+            <FieldWrapper>
+              <label htmlFor="password">Password:</label>
+              <Input
+                type="password"
+                value={password}
+                data-testid="password-input"
+                required
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </FieldWrapper>
+            <FieldWrapper>
+              <label htmlFor="confirmPassword">Confirm Password:</label>
+              <Input
+                type="password"
+                value={confirmPassword}
+                data-testid="confirm-password-input"
+                required
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+            </FieldWrapper>
+
+            <div>
+              <Button type="submit" data-testid="register-button">
+                Register
+              </Button>
+            </div>
+
+            <LinkWrapper>
+              <StyledLink to="/login">Login Instead</StyledLink>
+            </LinkWrapper>
+          </form>
+        </FormWrapper>
+      </Container>
+    </>
   );
 }
 

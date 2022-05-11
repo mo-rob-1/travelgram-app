@@ -3,7 +3,18 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { login, reset } from "../../features/auth/authSlice";
-import { Container } from "./Login.styled";
+import {
+  Container,
+  StyledLink,
+  Input,
+  Button,
+  Heading,
+  HeadingWrapper,
+  EmailFieldWrapper,
+  FormWrapper,
+  LinkWrapper,
+  Section,
+} from "./Login.styled";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -51,57 +62,59 @@ function Login() {
 
   if (isLoading) {
     return (
-      <div>
-        <h2>Loading...</h2>
+      <Section>
+        <h2 style={{ marginBottom: "1rem" }}>Loading...</h2>
         <p>If the page is still loading, refresh page and try again (Ensure email and password are correct)</p>
-      </div>
+      </Section>
     );
   }
 
   return (
     <>
       <Container>
-        <section className="heading">
-          <h1>Login</h1>
-          <p>Login to access your account</p>
-        </section>
-        <section className="form">
-          <form onSubmit={onSubmit}>
-            <div className="form-group">
-              <input
-                type="email"
-                data-testid="email-input"
-                className="form-control"
-                id="email"
-                name="email"
-                value={email}
-                placeholder="Enter your email"
-                onChange={onChange}
-                required
-              />
-            </div>
+        <FormWrapper>
+          <HeadingWrapper>
+            <Heading>Login</Heading>
+            <p>Login to access your account</p>
+          </HeadingWrapper>
+          <section>
+            <form onSubmit={onSubmit}>
+              <EmailFieldWrapper>
+                <label htmlFor="email">Email:</label>
+                <Input
+                  type="email"
+                  data-testid="email-input"
+                  id="email"
+                  name="email"
+                  value={email}
+                  onChange={onChange}
+                  required
+                />
+              </EmailFieldWrapper>
 
-            <div className="form-group">
-              <input
-                type="password"
-                data-testid="password-input"
-                className="form-control"
-                id="password"
-                name="password"
-                value={password}
-                placeholder="Enter a password"
-                onChange={onChange}
-                required
-              />
-            </div>
+              <div>
+                <label htmlFor="password">Password:</label>
+                <Input
+                  type="password"
+                  data-testid="password-input"
+                  id="password"
+                  name="password"
+                  value={password}
+                  onChange={onChange}
+                  required
+                />
+              </div>
 
-            <div className="form-group">
-              <button type="submit" className="btn btn-block">
-                Login
-              </button>
-            </div>
-          </form>
-        </section>
+              <div>
+                <Button type="submit">Login</Button>
+              </div>
+
+              <LinkWrapper>
+                <StyledLink to="/register">Sign Up Instead</StyledLink>
+              </LinkWrapper>
+            </form>
+          </section>
+        </FormWrapper>
       </Container>
     </>
   );
