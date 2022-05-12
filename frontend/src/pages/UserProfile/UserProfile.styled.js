@@ -89,4 +89,5 @@ export const ShareButton = styled.button`
   padding: 0.7rem 1rem;
   border: none;
   display: flex;
+  align-items: center;
 `;
