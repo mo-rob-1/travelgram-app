@@ -86,15 +86,15 @@ function MyImages() {
               <h3>{userImages.length} images</h3>
             </NumberOfImagesWrapper>
           </UserInfoWrapper>
+
+          <DeleteAccountButton onClick={deleteAccount}>
+            <AiOutlineClose style={{ marginRight: "4px" }} />
+            <span>Delete Account</span>
+          </DeleteAccountButton>
           <Line></Line>
           <h3 data-testid="no-images" style={{ marginTop: "1.5rem" }}>
             You have not uploaded any images yet.
           </h3>
-
-          <DeleteAccountButton onClick={deleteAccount}>
-            <AiOutlineClose style={{ marginRight: "2px" }} />
-            <span>Delete Account</span>
-          </DeleteAccountButton>
         </div>
       )}
 
@@ -110,6 +110,12 @@ function MyImages() {
               <h3>{userImages.length} images</h3>
             </NumberOfImagesWrapper>
           </UserInfoWrapper>
+
+          <DeleteAccountButton onClick={deleteAccount}>
+            <AiOutlineClose style={{ marginRight: "4px" }} />
+            <span>Delete Account</span>
+          </DeleteAccountButton>
+
           <Line></Line>
           <List>
             {userImages.map((image) => (
@@ -129,7 +135,6 @@ function MyImages() {
                       <GoLocation style={{ marginRight: "4px" }} /> {image.imageLocation}
                     </IconWrapper>
                   </Location>
-                  <div></div>
                   <DeleteButton onClick={() => dispatch(deleteImage(image._id)) && navigate("/")}>
                     <AiOutlineClose style={{ color: "#fff", fontSize: "1.4rem", position: "relative", top: "2px" }} />
                   </DeleteButton>
@@ -137,10 +142,6 @@ function MyImages() {
               </li>
             ))}
           </List>
-          <DeleteAccountButton onClick={deleteAccount}>
-            <AiOutlineClose style={{ marginRight: "2px" }} />
-            <span>Delete Account</span>
-          </DeleteAccountButton>
         </div>
       )}
     </Section>

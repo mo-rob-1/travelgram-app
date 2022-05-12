@@ -50,8 +50,6 @@ export const Title = styled.h2`
 
 export const Avatar = styled.img`
   height: 100px;
-
-  object-fit: contain;
   border-radius: 50%;
   width: 100px;
   object-fit: cover;
@@ -98,7 +96,7 @@ export const DeleteAccountButton = styled.button`
   border: none;
   background-color: #ea2027;
   color: #fff;
-  padding: 1rem;
+  padding: 0.7rem 1rem;
   display: flex;
   align-items: center;
   margin-top: 2rem;

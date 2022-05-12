@@ -38,10 +38,8 @@ export const Avatar = styled.img`
 `;
 
 export const Title = styled.h1`
-  /* text-align: center; */
   @media (min-width: 768px) {
     margin-top: 1rem;
-    /* text-align: left; */
   }
 `;
 

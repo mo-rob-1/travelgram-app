@@ -80,3 +80,13 @@ export const Line = styled.div`
   background: #dfdfdf;
   margin-top: 1.5rem;
 `;
+
+export const ShareButton = styled.button`
+  background-color: #222;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 2rem;
+  padding: 0.7rem 1rem;
+  border: none;
+  display: flex;
+`;

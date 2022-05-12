@@ -15,8 +15,11 @@ import {
   Name,
   UserInfoTextWrapper,
   Line,
+  ShareButton,
 } from "./UserProfile.styled";
 import { GoLocation } from "react-icons/go";
+import { toast } from "react-toastify";
+import { BsShareFill } from "react-icons/bs";
 
 function UserProfile() {
   const { user } = useParams();
@@ -47,6 +50,13 @@ function UserProfile() {
       });
   }, []);
 
+  const getUrl = window.location.href;
+
+  async function copyToClip() {
+    await navigator.clipboard.writeText(getUrl);
+    toast.success("Link copied");
+  }
+
   if (loading) {
     return (
       <Section>
@@ -69,6 +79,9 @@ function UserProfile() {
               <h3>{images.length} images</h3>
             </NumberOfImagesWrapper>
           </UserInfoWrapper>
+          <ShareButton onClick={copyToClip}>
+            <BsShareFill className="mr-2" style={{ marginRight: ".5rem" }} /> Share Profile
+          </ShareButton>
           <Line></Line>
           <h3 data-testid="no-images" style={{ marginTop: "1.5rem" }}>
             This user has not uploaded any images yet.
@@ -88,6 +101,9 @@ function UserProfile() {
               <h3>{images.length} images</h3>
             </NumberOfImagesWrapper>
           </UserInfoWrapper>
+          <ShareButton onClick={copyToClip}>
+            <BsShareFill className="mr-2" style={{ marginRight: ".5rem" }} /> Share Profile
+          </ShareButton>
           <Line></Line>
           <List>
             {images.map((image) => (
@@ -102,11 +118,6 @@ function UserProfile() {
                       data-testid="image"
                     />
                   </div>
-                  {/* <Username>
-                    <IconWrapper>
-                      <AiOutlineUser style={{ marginRight: "4px" }} /> {image.username}
-                    </IconWrapper>
-                  </Username> */}
                   <Location>
                     <IconWrapper>
                       <GoLocation style={{ marginRight: "4px" }} /> {image.imageLocation}
