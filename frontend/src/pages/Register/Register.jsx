@@ -15,6 +15,7 @@ import {
   LinkWrapper,
   ChooseFile,
 } from "./Register.styled";
+import { Helmet } from "react-helmet";
 
 function Register() {
   const [avatar, setAvatar] = useState(null);
@@ -54,6 +55,9 @@ function Register() {
 
   return (
     <>
+      <Helmet>
+        <title>Register | travelGram App</title>
+      </Helmet>
       <Container>
         <FormWrapper>
           <HeadingWrapper>

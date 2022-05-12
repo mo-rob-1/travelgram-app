@@ -23,6 +23,7 @@ import {
 import ModalImage from "react-modal-image";
 import { GoLocation } from "react-icons/go";
 import { AiOutlineClose } from "react-icons/ai";
+import { Helmet } from "react-helmet";
 
 function MyImages() {
   const { user } = useSelector((state) => state.auth);
@@ -74,6 +75,9 @@ function MyImages() {
 
   return (
     <Section>
+      <Helmet>
+        <title>My Images | travelGram App</title>
+      </Helmet>
       {userImages.length === 0 && (
         <div>
           <UserInfoWrapper>

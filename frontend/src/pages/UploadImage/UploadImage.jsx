@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { uploadImage } from "../../features/images/imageSlice";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 import {
   Section,
   Canvas,
@@ -79,6 +80,9 @@ function UploadImage() {
 
   return (
     <Section>
+      <Helmet>
+        <title>Upload Image | travelGram App</title>
+      </Helmet>
       <Title>Upload Image</Title>
       <Form onSubmit={handleSubmit} data-testid="form">
         <ColOne>

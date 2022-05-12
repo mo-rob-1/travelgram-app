@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { login, reset } from "../../features/auth/authSlice";
+import { Helmet } from "react-helmet";
 import {
   Container,
   StyledLink,
@@ -63,6 +64,9 @@ function Login() {
   if (isLoading) {
     return (
       <Section>
+        <Helmet>
+          <title>Login | travelGram App</title>
+        </Helmet>
         <h2 style={{ marginBottom: "1rem" }}>Loading...</h2>
         <p>If the page is still loading, refresh page and try again (Ensure email and password are correct)</p>
       </Section>
@@ -71,6 +75,9 @@ function Login() {
 
   return (
     <>
+      <Helmet>
+        <title>Login | travelGram App</title>
+      </Helmet>
       <Container>
         <FormWrapper>
           <HeadingWrapper>

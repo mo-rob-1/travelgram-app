@@ -1,9 +1,13 @@
 import { Section, Span } from "./About.styled";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 function About() {
   return (
     <Section>
+      <Helmet>
+        <title>About | travelGram App</title>
+      </Helmet>
       <h1>
         About <Span>travel</Span>Gram
       </h1>

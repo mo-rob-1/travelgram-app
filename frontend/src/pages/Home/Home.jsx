@@ -5,6 +5,7 @@ import ModalImage from "react-modal-image";
 import { GoLocation } from "react-icons/go";
 import { AiOutlineUser } from "react-icons/ai";
 import { useSelector } from "react-redux";
+import { Helmet } from "react-helmet";
 
 function Home() {
   const [images, setImages] = useState([]);
@@ -42,6 +43,9 @@ function Home() {
 
   return (
     <Section>
+      <Helmet>
+        <title>travelGram App</title>
+      </Helmet>
       {images.length === 0 && (
         <div>
           <Title>All Images</Title>

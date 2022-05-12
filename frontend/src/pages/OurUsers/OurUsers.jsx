@@ -15,6 +15,7 @@ import {
 } from "./OurUsers.styled";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { Helmet } from "react-helmet";
 
 function OurUsers() {
   const [users, setUsers] = useState([]);
@@ -52,6 +53,9 @@ function OurUsers() {
 
   return (
     <Section>
+      <Helmet>
+        <title>Our Users | travelGram App</title>
+      </Helmet>
       {users.length === 0 && (
         <div>
           <Title>All Users</Title>
