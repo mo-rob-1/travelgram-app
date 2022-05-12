@@ -9,7 +9,6 @@ import UploadImage from "./pages/UploadImage/UploadImage";
 import OurUsers from "./pages/OurUsers/OurUsers";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import MyImages from "./pages/MyImages/MyImages";
-// import UpdateProfile from "./pages/UpdateProfile/UpdateProfile";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
@@ -37,9 +36,6 @@ function App() {
             <Route path="/my-images/" element={<PrivateRoute />}>
               <Route path="/my-images/" element={<MyImages />} />
             </Route>
-            {/* <Route path="/update-profile/" element={<PrivateRoute />}>
-            <Route path="/update-profile/" element={<UpdateProfile />} />
-          </Route> */}
           </Routes>
           <Footer />
         </Container>
