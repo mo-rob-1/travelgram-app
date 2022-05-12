@@ -112,7 +112,7 @@ function Home() {
             ))}
           </List>
           <div style={{ textAlign: "center", marginTop: "4rem", marginBottom: "4rem" }}>
-            <LoginLink to="/login">Login to view all users</LoginLink>
+            <LoginLink to="/login">Login to view all images</LoginLink>
           </div>
         </div>
       )}
