@@ -60,10 +60,11 @@ export const UserTextWrapper = styled.div`
   margin-top: 1rem;
 `;
 
-export const ViewProfile = styled(Link)`
+export const ViewProfile = styled.p`
   color: #222;
   margin-top: 1rem;
   font-weight: bold;
+  text-decoration: underline;
 `;
 
 export const Section = styled.section`
@@ -72,4 +73,12 @@ export const Section = styled.section`
   @media (min-width: 1024px) {
     margin-top: 3rem;
   }
+`;
+
+export const LoginLink = styled(Link)`
+  text-align: center;
+  color: #fff;
+  padding: 1rem;
+  background-color: #222;
+  text-decoration: none;
 `;

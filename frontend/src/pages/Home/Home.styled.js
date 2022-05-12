@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const List = styled.ul`
   list-style-type: none;
@@ -57,4 +58,16 @@ export const Title = styled.h1`
   @media (min-width: 768px) {
     margin-top: 1rem;
   }
+`;
+
+export const LoginLink = styled(Link)`
+  text-align: center;
+  color: #fff;
+  padding: 1rem;
+  background-color: #222;
+  text-decoration: none;
+`;
+
+export const Span = styled.span`
+  font-weight: 400;
 `;

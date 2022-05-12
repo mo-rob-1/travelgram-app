@@ -92,3 +92,14 @@ export const DeleteButton = styled.button`
   background-color: #ea2027;
   color: #fff;
 `;
+
+export const DeleteAccountButton = styled.button`
+  cursor: pointer;
+  border: none;
+  background-color: #ea2027;
+  color: #fff;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+`;
