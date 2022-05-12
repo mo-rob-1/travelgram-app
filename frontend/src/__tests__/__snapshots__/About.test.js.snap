@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`About renders the about page 1`] = `
+<DocumentFragment>
+  <section
+    class="sc-bczRLJ boIiCX"
+  >
+    <h1>
+      About 
+      <span
+        class="sc-gsnTZi gQtzFr"
+      >
+        travel
+      </span>
+      Gram
+    </h1>
+    <h3
+      style="margin-bottom: 1rem;"
+    >
+      Welcome to 
+      <span
+        class="sc-gsnTZi gQtzFr"
+      >
+        travel
+      </span>
+      Gram
+    </h3>
+    <p>
+      travelGram is an app that allows you to upload and share your travel images.
+    </p>
+    <p
+      style="margin-top: 1rem; margin-bottom: 1rem;"
+    >
+      This app is perfect for:
+    </p>
+    <ul>
+      <li>
+        Sharing your travel images with your friends and family.
+      </li>
+      <li>
+        Professional and amateur photographers wanting to share their portfolio.
+      </li>
+      <li>
+        Backpackers wanting to share their journey.
+      </li>
+      <li>
+        Gap year students wanting to share the places they’ve been to with their friends and colleagues.
+      </li>
+      <li>
+        You – Have you been somewhere or went traveling and want to share the pictures you’ve taken? If yes, then this app is for you. 
+        <a
+          href="/register"
+          style="color: rgb(34, 34, 34);"
+        >
+          Register
+        </a>
+         now to get started.
+      </li>
+    </ul>
+  </section>
+</DocumentFragment>
+`;
