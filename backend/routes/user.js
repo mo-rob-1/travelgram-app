@@ -1,11 +1,9 @@
 const jwt = require("jsonwebtoken");
 const bycrypt = require("bcryptjs");
-const asyncHandler = require("express-async-handler");
 const cloudinary = require("../utils/cloudinary");
 const User = require("../models/user");
 const upload = require("../utils/multer");
 const router = require("express").Router();
-const { ObjectId } = require("mongoose").Types;
 
 router.post("/", upload.single("avatar"), async (req, res) => {
   const { name, email, password, username } = req.body;
@@ -99,32 +97,6 @@ router.delete("/:id", async (req, res) => {
     await cloudinary.uploader.destroy(user.cloudinary_id);
     // Delete user from db
     await user.remove();
-    res.json(user);
-  } catch (err) {
-    console.log(err);
-  }
-});
-
-// update user details and avatar
-router.put("/:id", upload.single("avatar"), async (req, res) => {
-  try {
-    // Find user by id
-    let user = await User.findById(req.params.id);
-
-    // Delete image from cloudinary
-    // await cloudinary.uploader.destroy(user.cloudinary_id);
-    // Update user details
-    user.name = req.body.name;
-    user.username = req.body.username;
-    user.email = req.body.email;
-    user.password = req.body.password;
-    // Upload image to cloudinary
-    // const result = await cloudinary.uploader.upload(req.file.path);
-    // Update user avatar
-    // user.avatar = result.secure_url;
-    // user.cloudinary_id = result.public_id;
-    // Save user
-    await user.save();
     res.json(user);
   } catch (err) {
     console.log(err);
