@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { logout } from "../../features/auth/authSlice";
 import { deleteImage, reset } from "../../features/images/imageSlice";
 import {
   Section,
@@ -17,6 +18,7 @@ import {
   UserInfoTextWrapper,
   Line,
   DeleteButton,
+  DeleteAccountButton,
 } from "./MyImages.styled";
 import ModalImage from "react-modal-image";
 import { GoLocation } from "react-icons/go";
@@ -30,6 +32,22 @@ function MyImages() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const deleteAccount = () => {
+    const confirm = window.confirm("Are you sure you want to delete your account? This action cannot be undone.");
+    if (confirm) {
+      axios
+        .delete(`/api/users/${user._id}`)
+        .then(() => {
+          dispatch(reset());
+          dispatch(logout());
+          navigate("/");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
 
   useEffect(() => {
     return () => {
@@ -72,6 +90,11 @@ function MyImages() {
           <h3 data-testid="no-images" style={{ marginTop: "1.5rem" }}>
             You have not uploaded any images yet.
           </h3>
+
+          <DeleteAccountButton onClick={deleteAccount}>
+            <AiOutlineClose style={{ marginRight: "2px" }} />
+            <span>Delete Account</span>
+          </DeleteAccountButton>
         </div>
       )}
 
@@ -107,13 +130,17 @@ function MyImages() {
                     </IconWrapper>
                   </Location>
                   <div></div>
-                  <DeleteButton onClick={() => dispatch(deleteImage(image._id)) && navigate("/my-images")}>
+                  <DeleteButton onClick={() => dispatch(deleteImage(image._id)) && navigate("/")}>
                     <AiOutlineClose style={{ color: "#fff", fontSize: "1.4rem", position: "relative", top: "2px" }} />
                   </DeleteButton>
                 </Figure>
               </li>
             ))}
           </List>
+          <DeleteAccountButton onClick={deleteAccount}>
+            <AiOutlineClose style={{ marginRight: "2px" }} />
+            <span>Delete Account</span>
+          </DeleteAccountButton>
         </div>
       )}
     </Section>
