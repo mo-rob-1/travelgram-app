@@ -117,7 +117,7 @@ exports[`Register renders the register user page 1`] = `
         </div>
         <div>
           <button
-            class="sc-dkzDqf kmGjhI"
+            class="sc-dkzDqf dpNTpy"
             data-testid="register-button"
             type="submit"
           >
