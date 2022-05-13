@@ -56,6 +56,7 @@ export const StyledLink = styled(Link)`
 export const ChooseFile = styled.input`
   width: 50%;
   margin-bottom: 1rem;
+  cursor: pointer;
   @media (min-width: 768px) {
     width: 100%;
   }

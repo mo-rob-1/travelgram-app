@@ -88,6 +88,7 @@ export const ColTwo = styled.div`
 
 export const UploadInput = styled.input`
   width: 50%;
+  cursor: pointer;
   @media (min-width: 768px) {
     width: 100%;
   }
