@@ -16,6 +16,7 @@ import {
   UserInfoTextWrapper,
   Line,
   ShareButton,
+  LocationLink,
 } from "./UserProfile.styled";
 import { GoLocation } from "react-icons/go";
 import { toast } from "react-toastify";
@@ -120,7 +121,9 @@ function UserProfile() {
                   </div>
                   <Location>
                     <IconWrapper>
-                      <GoLocation style={{ marginRight: "4px" }} /> {image.imageLocation}
+                      <LocationLink href={`https://www.google.co.uk/maps/place/${image.imageLocation}`} target="_blank">
+                        <GoLocation style={{ marginRight: "4px" }} /> {image.imageLocation}
+                      </LocationLink>
                     </IconWrapper>
                   </Location>
                 </Figure>

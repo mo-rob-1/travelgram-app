@@ -1,6 +1,18 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Section, List, Figure, Location, Username, IconWrapper, Title, LoginLink, Span } from "./Home.styled";
+import {
+  Section,
+  List,
+  Figure,
+  Location,
+  Username,
+  IconWrapper,
+  Title,
+  LoginLink,
+  Span,
+  UserLink,
+  LocationLink,
+} from "./Home.styled";
 import ModalImage from "react-modal-image";
 import { GoLocation } from "react-icons/go";
 import { AiOutlineUser } from "react-icons/ai";
@@ -70,12 +82,17 @@ function Home() {
                   </div>
                   <Username>
                     <IconWrapper>
-                      <AiOutlineUser style={{ marginRight: "4px" }} /> {image.username}
+                      <UserLink to={`/our-users/${image.user}`}>
+                        <AiOutlineUser style={{ marginRight: "4px" }} />
+                        {image.username}
+                      </UserLink>
                     </IconWrapper>
                   </Username>
                   <Location>
                     <IconWrapper>
-                      <GoLocation style={{ marginRight: "4px" }} /> {image.imageLocation}
+                      <LocationLink href={`https://www.google.co.uk/maps/place/${image.imageLocation}`} target="_blank">
+                        <GoLocation style={{ marginRight: "4px" }} /> {image.imageLocation}
+                      </LocationLink>
                     </IconWrapper>
                   </Location>
                 </Figure>
@@ -103,12 +120,17 @@ function Home() {
                   </div>
                   <Username>
                     <IconWrapper>
-                      <AiOutlineUser style={{ marginRight: "4px" }} /> {image.username}
+                      <UserLink to={`/our-users/${image.user}`}>
+                        <AiOutlineUser style={{ marginRight: "4px" }} />
+                        {image.username}
+                      </UserLink>
                     </IconWrapper>
                   </Username>
                   <Location>
                     <IconWrapper>
-                      <GoLocation style={{ marginRight: "4px" }} /> {image.imageLocation}
+                      <LocationLink href={`https://www.google.co.uk/maps/place/${image.imageLocation}`} target="_blank">
+                        <GoLocation style={{ marginRight: "4px" }} /> {image.imageLocation}
+                      </LocationLink>
                     </IconWrapper>
                   </Location>
                 </Figure>

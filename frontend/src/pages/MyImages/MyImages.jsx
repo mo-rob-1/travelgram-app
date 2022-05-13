@@ -19,6 +19,7 @@ import {
   Line,
   DeleteButton,
   DeleteAccountButton,
+  LocationLink,
 } from "./MyImages.styled";
 import ModalImage from "react-modal-image";
 import { GoLocation } from "react-icons/go";
@@ -136,7 +137,9 @@ function MyImages() {
                   </div>
                   <Location>
                     <IconWrapper>
-                      <GoLocation style={{ marginRight: "4px" }} /> {image.imageLocation}
+                      <LocationLink href={`https://www.google.co.uk/maps/place/${image.imageLocation}`} target="_blank">
+                        <GoLocation style={{ marginRight: "4px" }} /> {image.imageLocation}
+                      </LocationLink>
                     </IconWrapper>
                   </Location>
                   <DeleteButton onClick={() => dispatch(deleteImage(image._id)) && navigate("/")}>
