@@ -97,6 +97,17 @@ function UploadImage() {
 
           <Wrapper>
             <InputWrapper>
+              <label htmlFor="image-location">Location:</label>
+              <br></br>
+              <Input
+                type="text"
+                required
+                value={imageLocation}
+                onChange={(e) => setImageLocation(e.target.value)}
+                data-testid="image-location-input"
+              />
+            </InputWrapper>
+            <InputWrapper>
               <label htmlFor="caption">Caption:</label>
               <br></br>
               <Input
@@ -105,17 +116,6 @@ function UploadImage() {
                 value={caption}
                 onChange={(e) => setCaption(e.target.value)}
                 data-testid="caption-input"
-              />
-            </InputWrapper>
-            <InputWrapper>
-              <label htmlFor="image-location">Image Location:</label>
-              <br></br>
-              <Input
-                type="text"
-                required
-                value={imageLocation}
-                onChange={(e) => setImageLocation(e.target.value)}
-                data-testid="image-location-input"
               />
             </InputWrapper>
           </Wrapper>
