@@ -24,7 +24,7 @@ function About() {
         <li>
           You – Have you been somewhere or went traveling and want to share the pictures you’ve taken? If yes, then this
           app is for you.{" "}
-          <Link to="/register" style={{ color: "#222" }}>
+          <Link to="/register" style={{ color: "#222", fontWeight: "bold" }}>
             Register
           </Link>{" "}
           now to get started.
