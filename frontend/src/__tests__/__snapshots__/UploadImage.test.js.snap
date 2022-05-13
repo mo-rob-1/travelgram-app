@@ -32,14 +32,14 @@ exports[`UploadImage renders the upload image page 1`] = `
             class="sc-eCYdqJ XwHSn"
           >
             <label
-              for="caption"
+              for="image-location"
             >
-              Caption:
+              Location:
             </label>
             <br />
             <input
               class="sc-jSMfEi ZyOou"
-              data-testid="caption-input"
+              data-testid="image-location-input"
               required=""
               type="text"
               value=""
@@ -49,14 +49,14 @@ exports[`UploadImage renders the upload image page 1`] = `
             class="sc-eCYdqJ XwHSn"
           >
             <label
-              for="image-location"
+              for="caption"
             >
-              Image Location:
+              Caption:
             </label>
             <br />
             <input
               class="sc-jSMfEi ZyOou"
-              data-testid="image-location-input"
+              data-testid="caption-input"
               required=""
               type="text"
               value=""

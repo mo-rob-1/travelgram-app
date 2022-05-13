@@ -3,7 +3,7 @@
 exports[`About renders the about page 1`] = `
 <DocumentFragment>
   <section
-    class="sc-bczRLJ boIiCX"
+    class="sc-bczRLJ fTuwIE"
   >
     <h1>
       About 
@@ -50,7 +50,7 @@ exports[`About renders the about page 1`] = `
         You – Have you been somewhere or went traveling and want to share the pictures you’ve taken? If yes, then this app is for you. 
         <a
           href="/register"
-          style="color: rgb(34, 34, 34);"
+          style="color: rgb(34, 34, 34); font-weight: bold;"
         >
           Register
         </a>
