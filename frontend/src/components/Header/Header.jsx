@@ -40,9 +40,6 @@ function Header() {
                 <li>
                   <StyledNavLink to="/">Home</StyledNavLink>
                 </li>
-                {/* <li>
-                  <StyledNavLink to="/about">About</StyledNavLink>
-                </li> */}
                 <li>
                   <StyledNavLink to="/our-users">Our Users</StyledNavLink>
                 </li>
@@ -52,11 +49,6 @@ function Header() {
                 <li>
                   <StyledNavLink to="/my-images">My Images</StyledNavLink>
                 </li>
-                {/* <li>
-                  <button>
-                    <Link to="/update-profile">Update Profile</Link>
-                  </button>
-                </li> */}
                 <li>
                   <LogoutButton onClick={onLogout}>Logout</LogoutButton>
                 </li>

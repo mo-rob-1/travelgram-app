@@ -4,22 +4,11 @@ import imageService from "./imageService";
 const initialState = {
   images: [],
   image: null,
-  // image: {},
   isError: false,
   isSuccess: false,
   isLoading: false,
   message: "",
 };
-
-// upload image to server and cloudinary
-// export const uploadImage = createAsyncThunk("images/uploadImage", async (imageData) => {
-//   try {
-//     const response = await imageService.uploadImage(imageData);
-//     return response.data;
-//   } catch (error) {
-//     throw error;
-//   }
-// });
 
 export const uploadImage = createAsyncThunk("images/uploadImage", async (imageData, thunkAPI) => {
   try {
@@ -42,18 +31,6 @@ export const getImages = createAsyncThunk("images/getImages", async (imageData, 
     return rejectWithValue(error);
   }
 });
-
-// export const getUserImages = createAsyncThunk("images/getUserImages", async (imageData, thunkAPI) => {
-//   try {
-//     const token = thunkAPI.getState().auth.user.token;
-//     return await imageService.getUserImages(token);
-//   } catch (error) {
-//     const message =
-//       (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
-
-//     return thunkAPI.rejectWithValue(message);
-//   }
-// });
 
 // get user images by id from server
 export const getUserImages = createAsyncThunk("images/getUserImages", async (_, thunkAPI) => {
@@ -89,34 +66,6 @@ export const imageSlice = createSlice({
     reset: (state) => initialState,
   },
   extraReducers: (builder) => {
-    // upload image
-    // builder.addCase(uploadImage.fulfilled, (state, action) => {
-    //   state.isSuccess = true;
-    //   state.isLoading = false;
-    //   state.message = action.payload.message;
-    // });
-    // builder.addCase(uploadImage.pending, (state) => {
-    //   state.isLoading = true;
-    // });
-    // builder.addCase(uploadImage.rejected, (state, action) => {
-    //   state.isError = true;
-    //   state.isLoading = false;
-    //   state.message = action.payload;
-    // });
-    // // get users images
-    // builder.addCase(getUserImages.fulfilled, (state, action) => {
-    //   state.images = action.payload;
-    //   state.isSuccess = true;
-    //   state.isLoading = false;
-    // });
-    // builder.addCase(getUserImages.pending, (state) => {
-    //   state.isLoading = true;
-    // });
-    // builder.addCase(getUserImages.rejected, (state, action) => {
-    //   state.isError = true;
-    //   state.isLoading = false;
-    //   state.message = action.payload;
-    // });
     builder
       // upload image
       .addCase(uploadImage.fulfilled, (state, action) => {

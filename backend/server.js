@@ -18,8 +18,6 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(cors());
 
-// app.use("/api/images", require("./routes/imageRoutes"));
-// app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/users", require("./routes/user"));
 app.use("/api/images", require("./routes/imageRoutes"));
 
