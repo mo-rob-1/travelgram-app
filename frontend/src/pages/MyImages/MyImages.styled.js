@@ -101,3 +101,10 @@ export const DeleteAccountButton = styled.button`
   align-items: center;
   margin-top: 2rem;
 `;
+
+export const LocationLink = styled.a`
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+`;

@@ -71,3 +71,17 @@ export const LoginLink = styled(Link)`
 export const Span = styled.span`
   font-weight: 400;
 `;
+
+export const UserLink = styled(Link)`
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+`;
+
+export const LocationLink = styled.a`
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+`;

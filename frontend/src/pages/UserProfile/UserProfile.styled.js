@@ -91,3 +91,10 @@ export const ShareButton = styled.button`
   display: flex;
   align-items: center;
 `;
+
+export const LocationLink = styled.a`
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+`;
