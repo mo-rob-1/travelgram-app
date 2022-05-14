@@ -9,10 +9,10 @@ Users can:
 - Delete images
 - View all images
 - View all users
-- Share a users profile
+- Share a user's profile
 - Delete account
 
-The images are stored in MongoDB with Express and Node.js being used to power the backend. React & Redux along with Styled Components was used to build and style the frontend. HTTP requests are made from the frontend using Axios. The React Testing Library was also used to test the pages and components of the application.
+The images are stored in MongoDB with Express and Node.js being used to power the backend. React & Redux along with 'Styled Components' was used to build and style the frontend. HTTP requests are made from the frontend using Axios. The React Testing Library was also used to test the pages and components of the application.
 
 Note: The images uploaded to the app were downloaded from [Pexels](https://www.pexels.com/).
 
@@ -43,6 +43,7 @@ Note: The images uploaded to the app were downloaded from [Pexels](https://www.p
 - React
 - React Hooks, React Router, React Testing Library
 - Redux
+- Cloudinary
 - Axios
 - MongoDB
 - Node.js and NPM
