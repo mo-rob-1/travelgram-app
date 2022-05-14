@@ -60,7 +60,7 @@ Note: Images uploaded to the app were downloaded from [Pexels](https://www.pexel
 ## Features for future development
 
 - Update user account details
-- 'Like image' button
+- Button to like an image
 
 ## Contact
 
