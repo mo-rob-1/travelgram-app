@@ -14,7 +14,7 @@ Users can:
 
 The images are stored in MongoDB with Express and Node.js being used to power the backend. React & Redux along with 'Styled Components' was used to build and style the frontend. HTTP requests are made from the frontend using Axios. The React Testing Library was also used to test the pages and components of the application.
 
-Note: The images uploaded to the app were downloaded from [Pexels](https://www.pexels.com/).
+Note: Images uploaded to the app were downloaded from [Pexels](https://www.pexels.com/).
 
 ![GIF showing the travelGram App](frontend/src/images/travelgram-app.gif)
 
@@ -59,7 +59,7 @@ Note: The images uploaded to the app were downloaded from [Pexels](https://www.p
 
 ## Features for future development
 
-- Update user profile details
+- Update user account details
 - 'Like image' button
 
 ## Contact
