@@ -48,7 +48,7 @@ function Home() {
   if (loading) {
     return (
       <Section>
-        <h2>Loading...</h2>
+        <h2>Loading....</h2>
       </Section>
     );
   }
